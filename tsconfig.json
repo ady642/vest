@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+    "target": "es6",
+    "module": "commonjs",
+    "allowJs": true,
+    "moduleResolution": "node",
+    "outDir": "dist",
+    "sourceMap": false,
+    "baseUrl": ".",
+  },
+  "include": ["dummy_data/**/*.vue", "tests/**/*.ts"],
+  "exclude": ["node_modules", ".vscode"]
+}

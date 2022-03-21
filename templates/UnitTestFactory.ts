@@ -1,4 +1,4 @@
-import {addDoubleQuotes, convertObjToArrayOfObj, findClosingBracketMatchIndex} from "../utils";
+import {addDoubleQuotes, convertObjToArrayOfObj, findClosingMatchIndex, pascalize} from "../utils";
 
 type paramsType = {
     componentName: string
@@ -10,6 +10,11 @@ type propVueType = { type: string, required?: boolean } | 'Number' | 'Boolean' |
 type propType = {
     name: string
     type: string
+}
+
+type childType = {
+    name: string,
+    props: propType[]
 }
 
 type eventType = {
@@ -25,7 +30,7 @@ class UnitTestFactory {
     constructor(name: string, vueCode: string) {
         const imports = this.buildImports(name, './')
         const createWrapper = this.buildCreateWrapper(name, this.getProps(vueCode)) // Find props
-        const testsSuite = this.buildTestSuites(name, [{ name: 'ElBadge', props: [{ name: 'value', type: 'boolean' }] }]) // Find children
+        const testsSuite = this.buildTestSuites(name, this.getChildren(vueCode)) // Find children
 
         this.test = imports + createWrapper + testsSuite
     }
@@ -33,7 +38,7 @@ class UnitTestFactory {
     private getProps(vueCode: string): propType[] {
         const stringSearched = 'props: '
         const propsOpeningBrace = vueCode.indexOf(stringSearched) + stringSearched.length
-        const propsClosingBrace = findClosingBracketMatchIndex(vueCode,  propsOpeningBrace)
+        const propsClosingBrace = findClosingMatchIndex(vueCode,  propsOpeningBrace)
 
         const propsString = vueCode.substring(propsOpeningBrace, propsClosingBrace + 1)
         const propsStringifies = addDoubleQuotes(propsString)
@@ -50,6 +55,18 @@ class UnitTestFactory {
 
             return { name, type: value}
         })
+    }
+
+    getChildren(vueCode: string): childType[] {
+        const htmlTags = ['template', 'div', 'section', 'a', 'button', 'p', 'select', 'textarea', 'main', 'head', 'h1', 'h2', 'h3', 'header', 'i', 'iframe', 'img']
+
+        const regexComponentInKebabCase = new RegExp(`<(?!${htmlTags})([a-z]*)(-[a-z]+)?`, 'gm')
+        const componentsNameInKebabCase = vueCode.match(regexComponentInKebabCase)
+        const componentsNameInPascalCase = componentsNameInKebabCase.map((componentNameKebab) => pascalize(componentNameKebab.substring(1)))
+
+        const propsName = vueCode.match(/:([a-z]*)(-[a-z]+)?/gm)
+
+        return componentsNameInPascalCase.map((componentNameInPascal) => ({ name: componentNameInPascal, props: [{ name: 'value', type: 'boolean' }] }))
     }
 
     private buildImports(name: string, path: string) {

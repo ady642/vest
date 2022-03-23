@@ -1,120 +1,124 @@
 import {addDoubleQuotes, convertObjToArrayOfObj, findClosingMatchIndex, getFileName, pascalize} from "../utils";
 
-type propVueType = { type: string, required?: boolean } | 'Number' | 'Boolean' | 'String'
+type propVueType = { type: string, required?: boolean } | 'Number' | 'Boolean' | 'String';
 
 type propType = {
     name: string
-    type: string
-}
+    type: 'number' | 'boolean' | 'string'
+};
 
 type childType = {
     name: string,
     props: propType[]
-}
+};
 
-type slotsType = string[]
+type slotsType = string[];
 
 type eventType = {
     name: string
     output: {
         type: 'event' | 'externalCall' | 'dispatch' | 'changeChildProp'
     }
-}
+};
 
-const htmlTags = 'template|slot|script|style|div|section|a|button|p|select|textarea|main|head|h1|h2|h3|header|i|iframe|img|span'
+const htmlTags = 'template|slot|script|style|div|section|a|button|p|select|textarea|main|head|h1|h2|h3|header|i|iframe|img|span';
 
 // TODO: GET REAL TYPE OF EVENT HANDLER
 // TODO: GET REAL NAME EVENT EMITTED IF IS EMIT TYPE
 // TODO: CREATE TEMPLATE IF IS DISPATCH
 // TODO: GET REAL TYPE OF PROPS CHILD
+// TODO: IF COMPONENT TAG IS PascalCase it causes an error
 
 class UnitTestFactory {
-    name: string
-    path: string
-    vueCode: string
-    slots: slotsType
-    events: eventType[]
-    props: propType[]
-    componentsTags: string[]
-    children: childType[]
-    test: string
+    name: string;
+    path: string;
+    vueCode: string;
+    slots: slotsType;
+    events: eventType[];
+    props: propType[];
+    componentsTags: string[];
+    children: childType[];
+    test: string;
 
     constructor(path: string, vueCode: string) {
-        const regexComponentInKebabCase = new RegExp(`<(?!\\/|${htmlTags})([^|[^>])*>`, 'g')
-        this.componentsTags = vueCode.match(regexComponentInKebabCase)
-        this.children = this.getChildren()
-        this.vueCode = vueCode
-        this.path = path
-        this.name = getFileName(path)
+        const regexComponentInKebabCase = new RegExp(`<(?!\\/|${htmlTags})([^|[^>])*>`, 'g');
+        this.componentsTags = vueCode.match(regexComponentInKebabCase) ?? [];
+        this.children = this.getChildren();
+        this.vueCode = vueCode;
+        this.path = path;
+        this.name = getFileName(path);
 
-        this.slots = this.getSlots()
-        this.events = this.getEvents()
-        this.props = this.getProps()
+        this.slots = this.getSlots();
+        this.events = this.getEvents();
+        this.props = this.getProps();
 
-        const imports = this.buildImports()
-        const createWrapper = this.buildCreateWrapper() // Find props
-        const findWrappers = this.buildFindWrappers()
-        const testsSuite = this.buildTestSuites(this.getChildren()) // Find children
+        const imports = this.buildImports();
+        const createWrapper = this.buildCreateWrapper(); // Find props
+        const findWrappers = this.buildFindWrappers();
+        const testsSuite = this.buildTestSuites(this.getChildren()); // Find children
 
-        this.test = imports + createWrapper + findWrappers + testsSuite
+        this.test = imports + createWrapper + findWrappers + testsSuite;
     }
 
     private getEvents(): eventType[] {
-        const tagWithEvent = this.vueCode.match(/<[a-z]+(.*@[a-z]+=.*)/g)
+        const tagWithEvent = this.vueCode.match(/<[a-z]+(.*@[a-z]+=.*)/g);
 
-        console.log(tagWithEvent)
+        console.log(tagWithEvent);
 
         return [
             { name: 'click', output: { type: 'event' } }
-        ]
+        ];
     }
 
     private getSlots(): slotsType {
-        const slots = this.vueCode.match(/<slot \/>/gm)
+        const slots = this.vueCode.match(/<slot \/>/gm);
 
-        return slots?.map((slot) => slot.match(/"([a-z]*)"/) ? slot.match(/"([a-z]*)"/)[0] : 'default') ?? []
+        const matchSlots = (slot: string) => slot.match(/"([a-z]*)"/) ?? [];
+
+        return slots?.map((slot) => matchSlots(slot) ? matchSlots(slot)[0] : 'default') ?? [];
     }
 
     private getProps(): propType[] {
-        const stringSearched = 'props: '
-        const propsIndex = this.vueCode.indexOf(stringSearched)
+        const stringSearched = 'props: ';
+        const propsIndex = this.vueCode.indexOf(stringSearched);
 
         if(propsIndex === -1) {
-            return []
+            return [];
         }
 
-        const propsOpeningBrace = this.vueCode.indexOf(stringSearched) + stringSearched.length
-        const propsClosingBrace = findClosingMatchIndex(this.vueCode,  propsOpeningBrace)
+        const propsOpeningBrace = this.vueCode.indexOf(stringSearched) + stringSearched.length;
+        const propsClosingBrace = findClosingMatchIndex(this.vueCode,  propsOpeningBrace);
 
-        const propsString = this.vueCode.substring(propsOpeningBrace, propsClosingBrace + 1)
-        const propsStringifies = addDoubleQuotes(propsString)
-        const propsObject = JSON.parse(propsStringifies)
-        const propsList = convertObjToArrayOfObj(propsObject)
+        const propsString = this.vueCode.substring(propsOpeningBrace, propsClosingBrace + 1);
+        const propsStringifies = addDoubleQuotes(propsString);
+        const propsObject = JSON.parse(propsStringifies);
+        const propsList = convertObjToArrayOfObj(propsObject);
 
         return propsList.map((prop) => {
-            const name = Object.keys(prop)[0]
-            const value = Object.values(prop)[0] as propVueType
+            const name = Object.keys(prop)[0];
+            const value = Object.values(prop)[0] as propVueType;
 
             if(typeof value === 'object') {
-                return {name, type: value?.type}
+                return {name, type: value?.type};
             }
 
-            return { name, type: value}
-        })
+            return { name, type: value.toLowerCase()};
+        }) as propType[];
     }
 
     getChildren(): childType[] {
         return this.componentsTags.map((componentTag) => {
-            const name = pascalize(componentTag.match(/<([a-z][A-Z]+)(-[a-z][A-Z]+)+/gmi)[0].substring(1))
-            const propsString = componentTag.match(/:([a-z]*)(-[a-z]+)?/gm)
-            const props = propsString ? propsString.map((prop) => ({name: prop.substring(1), type: 'boolean'})) : []
-            const eventsString = componentTag.match(/@([a-z]*)(-[a-z]+)?/gm)
-            const events: eventType[] = eventsString ? eventsString.map((event) => ({ name: event.substring(1), output: { type: 'event' } })) : []
+            const componentTagMatch = componentTag.match(/<([a-z][A-Z]+)(-[a-z][A-Z]+)+/gmi) ?? [];
+            const name = pascalize(componentTagMatch[0].substring(1));
+            const propsString = componentTag.match(/:([a-z]*)(-[a-z]+)?/gm);
+            const props = propsString ? propsString.map((prop) => ({name: prop.substring(1), type: 'boolean'})) : [];
+            const eventsString = componentTag.match(/@([a-z]*)(-[a-z]+)?/gm);
+            const events: eventType[] = eventsString ? eventsString.map((event) => ({ name: event.substring(1), output: { type: 'event' } })) : [];
 
             return {
                 name, props, events
-            }
-        })
+            };
+        }) as childType[];
     }
 
     private buildImports() {
@@ -123,17 +127,17 @@ class UnitTestFactory {
             import wrapperFactory from 'tests/unit/utils/wrapperFactory'
             import useElement from 'tests/unit/utils/useElementStubs'
             import { VueWrapper } from '@vue/test-utils'
-        `
+        `;
     }
 
-    private getDefaultValueByType(type) {
+    private getDefaultValueByType(type: 'number' | 'boolean' | 'string') {
         const mappingDefaultValue = {
             'number': 1,
             'boolean': true,
             'string': 'test string'
-        }
+        };
 
-        return mappingDefaultValue[type]
+        return mappingDefaultValue[type];
     }
 
 
@@ -144,9 +148,9 @@ class UnitTestFactory {
             }
             
             const defaultProps: ${this.name}Props = {
-              ${this.props.map((prop) => `${prop.name}: ${this.getDefaultValueByType(prop.type.toLowerCase())}`)}
+              ${this.props.map((prop) => `${prop.name}: ${this.getDefaultValueByType(prop.type.toLowerCase() as 'number' | 'boolean' | 'string')}`)}
             }  
-        ` : ''
+        ` : '';
 
         const creationWrapper = `
             const createWrapper = ({
@@ -159,20 +163,20 @@ class UnitTestFactory {
               }`: ''})
               
             let wrapper = createWrapper()
-        `
+        `;
 
-        return propTypes + creationWrapper
+        return propTypes + creationWrapper;
     }
 
     private buildFindWrappers() {
         return `${this.children.map((child) => `
                 let find${child.name} = (wrapper) => wrapper.findComponent(${child.name})
-        `)}`
+        `)}`;
     }
 
     private buildSlotsIt() {
         if(this.slots.length === 0) {
-            return ''
+            return '';
         }
 
         return `describe('rendering', () => {
@@ -181,26 +185,26 @@ class UnitTestFactory {
                expect(wrapper.html()).toContain('I fill the ${slot} slot')
              })`
             )}
-        })`
+        })`;
     }
 
     private buildEventsIt(child: { name: string, props: propType[], events?: eventType[] }) {
-        if(child.events.length === 0) {
-            return ''
+        if(child.events?.length === 0) {
+            return '';
         }
 
         const chooseAction = (type: string) => {
-            return type === 'event' ? 'emit': 'dispatch'
-        }
+            return type === 'event' ? 'emit': 'dispatch';
+        };
 
         return `describe('events', () => {
-            ${child.events.map((event) =>
+            ${child.events?.map((event) =>
             `it('should ${chooseAction(event.output.type)} ${event.name} when ${child.name} emits ${event.name}', () => {
                 await ${child.name}Wrapper.vm.$emit(${event.name})
                 expect(wrapper.emitted('my-event')).toHaveLength(1)
              })`
             )}
-        })`
+        })`;
     }
 
     private buildTestSuites(children: { name: string, props: propType[], events?: eventType[] }[]) {
@@ -217,7 +221,7 @@ class UnitTestFactory {
 
                       describe('binding with ${children[0].name}', () => {
                         test('static props', () => {
-                          ${children[0].props.map((prop) => `expect(${children[0].name}Wrapper.attributes(${prop.name})).toBe(${this.getDefaultValueByType(prop.type)})\n`)})
+                          ${children[0].props.map((prop) => `expect(${children[0].name}Wrapper.attributes('${prop.name}')).toBe(${this.getDefaultValueByType(prop.type)})\n`)} })
                       })
                       
                       ${this.buildSlotsIt()}       
@@ -228,9 +232,9 @@ class UnitTestFactory {
                 })
                 
                 
-        `
+        `;
     }
 }
 
 
-export default UnitTestFactory
+export default UnitTestFactory;

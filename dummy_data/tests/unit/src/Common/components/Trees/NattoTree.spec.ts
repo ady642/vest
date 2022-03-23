@@ -1,46 +1,43 @@
-import NattoTree from '@/Common/components/Tree/NattoTree.vue'
-import wrapperFactory from 'tests/unit/utils/wrapperFactory'
-import { ComponentPublicInstance } from 'vue'
-import { VueWrapper } from '@vue/test-utils'
-import useElementStubs from 'tests/unit/utils/useElementStubs'
 
-/****
- * Wrapper types
- */
+            import NattoTree from '/home/adri/Desktop/Projects/unittestgen/dummy_data/src/Common/components/Trees/NattoTree.vue'
+            import wrapperFactory from 'tests/unit/utils/wrapperFactory'
+            import useElement from 'tests/unit/utils/useElementStubs'
+            import { VueWrapper } from '@vue/test-utils'
+        
+            const createWrapper = ({
+                
+              
+            } = {}) =>
+              wrapperFactory(NattoTree )
+              
+            let wrapper = createWrapper()
+        
+                let findElTree = (wrapper) => wrapper.findComponent(ElTree)
+        
+                
+                    let ElTreeWrapper = findElTree(wrapper)
+                
 
-export type NattoTreeWrapper = VueWrapper<ComponentPublicInstance>
+                describe(NattoTree, () => {
+                     beforeEach(() => {
+                        wrapper = createWrapper()
+                        ElTreeWrapper = findElTree(wrapper)
 
-/****
- * Wrapper creation
- */
+                     })
 
-const { ElTree } = useElementStubs()
-
-const createWrapper = ({
-  slots = {
-    item: '<div id="test" />'
-  }
-} = {}): NattoTreeWrapper =>
-  wrapperFactory(NattoTree, {
-    global: {
-      renderStubDefaultSlot: true,
-      stubs: { ElTree }
-    },
-    slots
-  })
-
-let wrapper = createWrapper()
-
-describe('NattoTree', () => {
-  beforeEach(() => {
-    wrapper = createWrapper()
-  })
-
-  describe('bindings with ElTree', () => {
-    describe('rendering', () => {
-      it('should render the item and pass the props', () => {
-        expect(wrapper.find('#test').exists()).toBe(true)
-      })
-    })
-  })
-})
+                      describe('binding with ElTree', () => {
+                        test('static props', () => {
+                          expect(ElTreeWrapper.attributes('expand-on')).toBe(true)
+,expect(ElTreeWrapper.attributes('empty-text')).toBe(true)
+ })
+                      })
+                      
+                             
+                      
+                    
+                        
+                    
+                })
+                
+                
+        

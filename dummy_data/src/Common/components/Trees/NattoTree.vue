@@ -1,5 +1,5 @@
 <template>
-  <ElTree
+  <el-tree
     class="natto-tree"
     v-bind="$attrs"
     :expand-on-click-node="false"
@@ -8,7 +8,7 @@
     <template #default="{ node, data }">
       <slot name="item" :node="node" :data="data" />
     </template>
-  </ElTree>
+  </el-tree>
 </template>
 
 <script lang="ts">

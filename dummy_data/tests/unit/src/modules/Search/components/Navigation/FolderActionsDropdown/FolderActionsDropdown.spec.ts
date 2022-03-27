@@ -1,4 +1,4 @@
-import wrapperFactory from 'tests/unit/utils/wrapperFactory'
+import wrapperFactory from 'dummy_data/tests/unit/utils/wrapperFactory'
 import { VueWrapper } from '@vue/test-utils'
 import { ComponentPublicInstance } from 'vue'
 import NattoDropdown from '@/Common/components/Dropdown/NattoDropdown.vue'
@@ -7,7 +7,7 @@ import Folder from '@/modules/Search/models/Folders/Inputs/Folder'
 import { FolderActionsDropdownListWrapper } from './FolderActionsDropdownList/FolderActionsDropdownList.spec'
 import FolderActionsDropdownList from '@/modules/Search/components/Navigation/FolderActionsDropdown/FolderActionsDropdownList/FolderActionsDropdownList.vue'
 import { Category } from '@/modules/Search/types'
-import useElementStubs from 'tests/unit/utils/useElementStubs'
+import useElementStubs from 'dummy_data/tests/unit/utils/useElementStubs'
 
 const { ElDropdown, ElDropdownMenu } = useElementStubs()
 

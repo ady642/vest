@@ -1,5 +1,5 @@
 import SearchPage from '@/modules/Search/pages/SearchPage.vue'
-import wrapperFactory from 'tests/unit/utils/wrapperFactory'
+import wrapperFactory from 'dummy_data/tests/unit/utils/wrapperFactory'
 import { VueWrapper } from '@vue/test-utils'
 import { ComponentPublicInstance } from '@vue/runtime-core'
 import DocumentsUploadModal from '@/modules/DataManipulation/Upload/components/DocumentsUploadModal/DocumentsUploadModal.vue'

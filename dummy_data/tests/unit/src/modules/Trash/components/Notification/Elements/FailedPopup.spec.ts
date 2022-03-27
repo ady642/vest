@@ -1,8 +1,8 @@
 import { VueWrapper } from '@vue/test-utils'
-import { createTrashStoreMock } from 'tests/unit/__mocks__/storeMock/createTrashStoreMock'
+import { createTrashStoreMock } from 'dummy_data/tests/unit/__mocks__/storeMock/createTrashStoreMock'
 import { ComponentPublicInstance } from 'vue'
 import FailedPopup from '@/modules/Trash/components/Notification/Elements/FailedPopup.vue'
-import wrapperFactory from 'tests/unit/utils/wrapperFactory'
+import wrapperFactory from 'dummy_data/tests/unit/utils/wrapperFactory'
 import * as translationHelper from '@/Common/hooks/useTranslation'
 
 type FailedPopupProps = {

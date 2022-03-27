@@ -4,8 +4,8 @@ import { VueWrapper } from '@vue/test-utils'
 import SaveButton from '@/modules/DataManipulation/Create/CreateFolder/components/SaveButton.vue'
 import NattoButton from '@/Common/components/Buttons/NattoButton.vue'
 
-import wrapperFactory from 'tests/unit/utils/wrapperFactory'
-import useElementStubs from 'tests/unit/utils/useElementStubs'
+import wrapperFactory from 'dummy_data/tests/unit/utils/wrapperFactory'
+import useElementStubs from 'dummy_data/tests/unit/utils/useElementStubs'
 
 /****
  * Wrapper types

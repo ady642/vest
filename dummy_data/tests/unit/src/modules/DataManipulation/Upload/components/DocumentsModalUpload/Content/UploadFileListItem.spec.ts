@@ -2,7 +2,7 @@ import UploadFileListItem from '@/modules/DataManipulation/Upload/components/Doc
 import FilenameText from '@/Common/components/Text/FilenameText.vue'
 import DocumentUploadStateIcon from '@/modules/Search/components/DocumentUploadStateIcon.vue'
 import FileUpload from '@/modules/DataManipulation/Upload/models/Files/Inputs/FileUpload'
-import wrapperFactory from 'tests/unit/utils/wrapperFactory'
+import wrapperFactory from 'dummy_data/tests/unit/utils/wrapperFactory'
 import { DOMWrapper, VueWrapper } from '@vue/test-utils'
 import { StateUpload } from '@/modules/DataManipulation/Upload/models/Files/Inputs/FileUpload'
 

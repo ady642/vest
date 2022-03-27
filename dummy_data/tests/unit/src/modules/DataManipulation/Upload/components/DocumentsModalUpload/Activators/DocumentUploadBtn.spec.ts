@@ -1,6 +1,6 @@
 import DocumentsUploadBtn from '@/modules/DataManipulation/Upload/components/DocumentsUploadModal/Activators/DocumentsUploadBtn.vue'
 import NattoUploadDropdown from '@/Common/components/Upload/Dropdown/NattoUploadDropDown.vue'
-import wrapperFactory from 'tests/unit/utils/wrapperFactory'
+import wrapperFactory from 'dummy_data/tests/unit/utils/wrapperFactory'
 import NattoUploadFilesBtn from '@/Common/components/Upload/Buttons/NattoUploadFilesBtn.vue'
 
 const createWrapper = (

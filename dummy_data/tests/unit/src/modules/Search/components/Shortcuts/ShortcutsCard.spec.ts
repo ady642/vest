@@ -1,8 +1,8 @@
 import ShortcutCard from '@/modules/Search/components/Shortcuts/ShortcutCard.vue'
 import Folder from '@/modules/Search/models/Folders/Inputs/Folder'
-import wrapperFactory from 'tests/unit/utils/wrapperFactory'
+import wrapperFactory from 'dummy_data/tests/unit/utils/wrapperFactory'
 import { DOMWrapper, VueWrapper } from '@vue/test-utils'
-import useElementStubs from 'tests/unit/utils/useElementStubs'
+import useElementStubs from 'dummy_data/tests/unit/utils/useElementStubs'
 import NattoCard from '@/Common/components/Cards/NattoCard.vue'
 import { Category } from '@/modules/Search/types'
 

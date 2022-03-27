@@ -1,8 +1,8 @@
 import MultipleDocumentsCtas from '@/modules/Search/components/Buttons/MultipleDocumentsCtas/MultipleDocumentsCtas.vue'
-import wrapperFactory from 'tests/unit/utils/wrapperFactory'
+import wrapperFactory from 'dummy_data/tests/unit/utils/wrapperFactory'
 import { ComponentPublicInstance } from 'vue'
 import { VueWrapper } from '@vue/test-utils'
-import { findDeleteCta, findDownloadCta } from 'tests/unit/utils/finders'
+import { findDeleteCta, findDownloadCta } from 'dummy_data/tests/unit/utils/finders'
 
 /****
  * Wrapper types

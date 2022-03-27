@@ -3,7 +3,7 @@ import CreateFolderServices from '@/modules/DataManipulation/Create/CreateFolder
 import { Category, CreateFolderQuery } from '@/modules/Search/types'
 import actions from '@/modules/DataManipulation/Create/CreateFolder/store/actions'
 import RootStateInterface from '@/store/types/rootState'
-import useFoldersData from 'tests/unit/src/modules/Search/mocks/FoldersDataMock'
+import useFoldersData from 'dummy_data/tests/unit/src/modules/Search/mocks/FoldersDataMock'
 import { searchModule } from '@/modules/Search/store'
 import { PUSH_FOLDER } from '@/modules/Search/store/mutations'
 import Folder from '@/modules/Search/models/Folders/Inputs/Folder'

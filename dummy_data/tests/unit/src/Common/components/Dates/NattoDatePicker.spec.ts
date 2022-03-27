@@ -1,6 +1,6 @@
 import NattoDatePicker from '@/Common/components/Dates/NattoDatePicker.vue'
-import wrapperFactory from 'tests/unit/utils/wrapperFactory'
-import useElement from 'tests/unit/utils/useElementStubs'
+import wrapperFactory from 'dummy_data/tests/unit/utils/wrapperFactory'
+import useElement from 'dummy_data/tests/unit/utils/useElementStubs'
 import { VueWrapper } from '@vue/test-utils'
 import { ComponentPublicInstance } from '@vue/runtime-core'
 import { WritableComputedRef } from 'vue'

@@ -1,5 +1,5 @@
 import DocumentsSearchBar from '@/modules/Search/components/Filters/DocumentsSearchBar.vue'
-import wrapperFactory from 'tests/unit/utils/wrapperFactory'
+import wrapperFactory from 'dummy_data/tests/unit/utils/wrapperFactory'
 import { ComponentPublicInstance } from 'vue'
 import { VueWrapper } from '@vue/test-utils'
 import { OpenFilterButtonWrapper } from './Buttons/OpenFilterButton.spec'

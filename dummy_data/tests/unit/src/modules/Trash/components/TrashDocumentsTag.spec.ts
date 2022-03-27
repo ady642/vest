@@ -1,4 +1,4 @@
-import wrapperFactory from 'tests/unit/utils/wrapperFactory'
+import wrapperFactory from 'dummy_data/tests/unit/utils/wrapperFactory'
 import { VueWrapper } from '@vue/test-utils'
 import { ComponentPublicInstance } from 'vue'
 import NattoTag from '@/Common/components/Tags/NattoTag.vue'

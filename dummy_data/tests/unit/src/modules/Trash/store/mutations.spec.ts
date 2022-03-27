@@ -8,7 +8,7 @@ import mutations, {
   SET_DOCUMENT_STATUS,
   REMOVE_DOCUMENT_IN_PENDING_LIST
 } from '@/modules/Trash/store/mutations'
-import { createTrashStoreMock } from 'tests/unit/__mocks__/storeMock/createTrashStoreMock'
+import { createTrashStoreMock } from 'dummy_data/tests/unit/__mocks__/storeMock/createTrashStoreMock'
 
 import { TrashStateInterface } from '@/modules/Trash/store/state'
 import constants from '@/Common/constants'

@@ -1,6 +1,6 @@
 import en from '@/locales/en'
 import fr from '@/locales/fr'
-import { keyify } from 'tests/unit/utils/objectHelper'
+import { keyify } from 'dummy_data/tests/unit/utils/objectHelper'
 describe('translation', () => {
   test('Check that all locale present in both languages', () => {
     const enKeys = keyify(en)

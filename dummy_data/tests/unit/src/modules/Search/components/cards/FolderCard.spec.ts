@@ -1,6 +1,6 @@
 import FolderCard from '@/modules/Search/components/Cards/FolderCard.vue'
 import Folder from '@/modules/Search/models/Folders/Inputs/Folder'
-import wrapperFactory from 'tests/unit/utils/wrapperFactory'
+import wrapperFactory from 'dummy_data/tests/unit/utils/wrapperFactory'
 import { VueWrapper } from '@vue/test-utils'
 import { Category } from '@/modules/Search/types'
 import NattoShortcutCard from '@/Common/components/Cards/NattoShortcutCard.vue'

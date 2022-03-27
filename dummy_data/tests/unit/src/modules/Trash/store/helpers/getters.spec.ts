@@ -4,7 +4,7 @@ import { createStore, Store } from 'vuex'
 import gettersHelper from '@/modules/Trash/store/helpers/gettersHelper'
 import TrashDocuments from '@/modules/Trash/models/Inputs/TrashDocuments'
 import TrashDocumentsPaginator from '@/modules/Trash/models/Query/TrashDocumentsPaginator'
-import { createTrashStoreMock } from 'tests/unit/__mocks__/storeMock/createTrashStoreMock'
+import { createTrashStoreMock } from 'dummy_data/tests/unit/__mocks__/storeMock/createTrashStoreMock'
 import { TrashDocumentAPILightMockList } from '../../mocks/TrashDocumentAPIMock'
 
 let storeMock = createTrashStoreMock()

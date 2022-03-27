@@ -1,5 +1,5 @@
 import AdvancedSearchOptions from '@/modules/Search/components/Filters/AdvancedSearchOptions/AdvancedSearchOptions.vue'
-import wrapperFactory from 'tests/unit/utils/wrapperFactory'
+import wrapperFactory from 'dummy_data/tests/unit/utils/wrapperFactory'
 import { ComponentPublicInstance } from 'vue'
 import { VueWrapper } from '@vue/test-utils'
 import Period from '@/Common/models/List/Period'

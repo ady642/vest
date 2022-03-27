@@ -1,8 +1,8 @@
 import ModalTwoColumns from '@/Common/components/Modals/ModalTwoColumns.vue'
 import NattoDialog from '@/Common/components/Modals/NattoDialog.vue'
-import wrapperFactory from 'tests/unit/utils/wrapperFactory'
+import wrapperFactory from 'dummy_data/tests/unit/utils/wrapperFactory'
 import { DOMWrapper, VueWrapper } from '@vue/test-utils'
-import useElement from 'tests/unit/utils/useElementStubs'
+import useElement from 'dummy_data/tests/unit/utils/useElementStubs'
 import { ComponentPublicInstance } from 'vue'
 
 const { ElDialog } = useElement()

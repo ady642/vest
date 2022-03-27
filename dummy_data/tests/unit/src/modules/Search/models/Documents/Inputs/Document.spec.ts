@@ -1,7 +1,7 @@
 import Document, {
   LifeCycleStatus
 } from '@/modules/Search/models/Documents/Inputs/Document'
-import { documentAPIMock } from 'tests/unit/src/modules/Search/mocks/DocumentAPIMock'
+import { documentAPIMock } from 'dummy_data/tests/unit/src/modules/Search/mocks/DocumentAPIMock'
 
 let document = new Document()
 

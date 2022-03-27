@@ -1,9 +1,9 @@
 import TrashShortcut from '@/modules/Trash/components/Shortcuts/TrashShortcut.vue'
-import wrapperFactory from 'tests/unit/utils/wrapperFactory'
+import wrapperFactory from 'dummy_data/tests/unit/utils/wrapperFactory'
 import { VueWrapper } from '@vue/test-utils'
 import NattoShortcutCard from '@/Common/components/Cards/NattoShortcutCard.vue'
 import { ComponentPublicInstance } from 'vue'
-import { createTrashStoreMock } from 'tests/unit/__mocks__/storeMock/createTrashStoreMock'
+import { createTrashStoreMock } from 'dummy_data/tests/unit/__mocks__/storeMock/createTrashStoreMock'
 import { router } from '@kpmg/mypulse-shared-dependencies'
 
 jest.mock('@/Common/helpers/analyticsLog', () => ({

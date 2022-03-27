@@ -1,5 +1,5 @@
 import NattoUploadStateIcon from '@/Common/components/Items/NattoUploadStateIcon.vue'
-import wrapperFactory from 'tests/unit/utils/wrapperFactory'
+import wrapperFactory from 'dummy_data/tests/unit/utils/wrapperFactory'
 import { DOMWrapper } from '@vue/test-utils'
 import { StateUpload } from '@/modules/DataManipulation/Upload/models/Files/Inputs/FileUpload'
 import WarningIcon from '@/Common/components/Icons/WarningIcon.vue'

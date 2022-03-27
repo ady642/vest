@@ -1,7 +1,7 @@
 import NattoCategoryButton from '@/Common/components/Buttons/NattoCategoryButton.vue'
-import wrapperFactory from 'tests/unit/utils/wrapperFactory'
+import wrapperFactory from 'dummy_data/tests/unit/utils/wrapperFactory'
 import { VueWrapper } from '@vue/test-utils'
-import useElementStubs from 'tests/unit/utils/useElementStubs'
+import useElementStubs from 'dummy_data/tests/unit/utils/useElementStubs'
 
 const { ElButton } = useElementStubs()
 const createWrapper = (

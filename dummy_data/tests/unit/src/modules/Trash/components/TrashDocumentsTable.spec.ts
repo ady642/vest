@@ -1,10 +1,10 @@
 import { ComponentPublicInstance } from 'vue'
 import { VueWrapper } from '@vue/test-utils'
-import useElementStubs from 'tests/unit/utils/useElementStubs'
-import wrapperFactory from 'tests/unit/utils/wrapperFactory'
-import { NattoTableWrapper } from 'tests/unit/src/Common/components/Table/NattoTable.spec'
+import useElementStubs from 'dummy_data/tests/unit/utils/useElementStubs'
+import wrapperFactory from 'dummy_data/tests/unit/utils/wrapperFactory'
+import { NattoTableWrapper } from 'dummy_data/tests/unit/src/Common/components/Table/NattoTable.spec'
 import NattoTable from '@/Common/components/Table/NattoTable.vue'
-import { createTrashStoreMock } from 'tests/unit/__mocks__/storeMock/createTrashStoreMock'
+import { createTrashStoreMock } from 'dummy_data/tests/unit/__mocks__/storeMock/createTrashStoreMock'
 import TrashDocuments from '@/modules/Trash/models/Inputs/TrashDocuments'
 import DocumentTypeElement from '@/modules/Search/components/DocumentsTable/DocumentsTableElements/DocumentTypeElement.vue'
 import DocumentNameElement from '@/modules/Search/components/DocumentsTable/DocumentsTableElements/DocumentNameElement.vue'
@@ -15,7 +15,7 @@ import TrashDocumentsActionsElement from '@/modules/Trash/components/TrashDocume
 import { TrashDocumentAPILightMockList } from '../mocks/TrashDocumentAPIMock'
 import TrashDocumentsTable from '@/modules/Trash/components/TrashDocumentsTable.vue'
 import RestoreFileModalConfirmation from '@/modules/Trash/components/Modals/RestoreFileModalConfirmation.vue'
-import { RestoreFileModalConfirmationWrapper } from 'tests/unit/src/modules/Trash/components/Modals/RestoreFileModalConfirmation.spec'
+import { RestoreFileModalConfirmationWrapper } from 'dummy_data/tests/unit/src/modules/Trash/components/Modals/RestoreFileModalConfirmation.spec'
 import { trackEventFactory } from '@/Common/helpers/analyticsLog'
 
 jest.mock('@/Common/helpers/analyticsLog', () => ({

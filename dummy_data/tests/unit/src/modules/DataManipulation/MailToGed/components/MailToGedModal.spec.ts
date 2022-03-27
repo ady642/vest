@@ -1,10 +1,10 @@
 import { ComponentPublicInstance } from 'vue'
 import { VueWrapper } from '@vue/test-utils'
-import wrapperFactory from 'tests/unit/utils/wrapperFactory'
+import wrapperFactory from 'dummy_data/tests/unit/utils/wrapperFactory'
 import { MailToGedInformations } from '@/modules/DataManipulation/MailToGed/models/MailToGedInformations'
 import MailToGedModal from '@/modules/DataManipulation/MailToGed/components/Modals/MailToGedModal.vue'
-import useMailToGedData from 'tests/unit/src/modules/DataManipulation/MailToGed/mocks/MailToGedDataMock'
-import useElement from 'tests/unit/utils/useElementStubs'
+import useMailToGedData from 'dummy_data/tests/unit/src/modules/DataManipulation/MailToGed/mocks/MailToGedDataMock'
+import useElement from 'dummy_data/tests/unit/utils/useElementStubs'
 import MailToGedLine from '@/modules/DataManipulation/MailToGed/components/Elements/MailToGedLine.vue'
 
 type MailToGedModalProps = {

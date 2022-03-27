@@ -1,5 +1,5 @@
 import NattoError from '@/Common/components/Inputs/NattoError.vue'
-import wrapperFactory from 'tests/unit/utils/wrapperFactory'
+import wrapperFactory from 'dummy_data/tests/unit/utils/wrapperFactory'
 import { ComponentPublicInstance } from 'vue'
 import { VueWrapper } from '@vue/test-utils'
 

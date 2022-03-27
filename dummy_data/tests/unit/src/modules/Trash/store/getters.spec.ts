@@ -3,7 +3,7 @@ import getters from '@/modules/Trash/store/getters'
 import TrashDocumentsPaginator from '@/modules/Trash/models/Query/TrashDocumentsPaginator'
 import TrashDocuments from '@/modules/Trash/models/Inputs/TrashDocuments'
 import { TrashStateInterface } from '@/modules/Trash/store/state'
-import { createTrashStoreMock } from 'tests/unit/__mocks__/storeMock/createTrashStoreMock'
+import { createTrashStoreMock } from 'dummy_data/tests/unit/__mocks__/storeMock/createTrashStoreMock'
 import { RestorationStatus } from '@/modules/Trash/models/Inputs/TrashDocument'
 
 let storeMock = createTrashStoreMock()

@@ -1,5 +1,5 @@
-import { createFile } from 'tests/unit/__mocks__/Files/createFile'
-import FoldersDataMock from 'tests/unit/src/modules/Search/mocks/FoldersDataMock'
+import { createFile } from 'dummy_data/tests/unit/__mocks__/Files/createFile'
+import FoldersDataMock from 'dummy_data/tests/unit/src/modules/Search/mocks/FoldersDataMock'
 
 import RootStateInterface from '@/store/types/rootState'
 import getters from '@/modules/DataManipulation/Delete/DeleteFolder/store/getters'

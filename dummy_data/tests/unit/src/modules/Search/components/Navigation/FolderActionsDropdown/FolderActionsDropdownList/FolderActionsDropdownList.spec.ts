@@ -1,6 +1,6 @@
 import FolderActionsDropdownList from '@/modules/Search/components/Navigation/FolderActionsDropdown/FolderActionsDropdownList/FolderActionsDropdownList.vue'
-import wrapperFactory from 'tests/unit/utils/wrapperFactory'
-import { NattoDropdownItemProps } from 'tests/unit/src/Common/components/Dropdowns/NattoDropdownItem.spec'
+import wrapperFactory from 'dummy_data/tests/unit/utils/wrapperFactory'
+import { NattoDropdownItemProps } from 'dummy_data/tests/unit/src/Common/components/Dropdowns/NattoDropdownItem.spec'
 import { VueWrapper } from '@vue/test-utils'
 import { ComponentPublicInstance } from 'vue'
 import FolderActionDropdownItem from '@/modules/Search/components/Navigation/FolderActionsDropdown/FolderActionsDropdownList/FolderActionDropdownItem.vue'

@@ -1,12 +1,12 @@
 import { ComponentPublicInstance } from 'vue'
 import { VueWrapper } from '@vue/test-utils'
-import wrapperFactory from 'tests/unit/utils/wrapperFactory'
+import wrapperFactory from 'dummy_data/tests/unit/utils/wrapperFactory'
 import DocumentDetailsTab from '@/modules/Search/components/Drawer/DocumentDownloadTab.vue'
 import NattoDate from '@/Common/components/Dates/NattoDate.vue'
 import Document from '@/modules/Search/models/Documents/Inputs/Document'
-import { findLoadingIcon, findMpButton } from 'tests/unit/utils/finders'
+import { findLoadingIcon, findMpButton } from 'dummy_data/tests/unit/utils/finders'
 import { createSearchStoreMocked } from 'tests/unit/__mocks__/storeMock'
-import useStyleguide from 'tests/unit/utils/useStyleguideStubs'
+import useStyleguide from 'dummy_data/tests/unit/utils/useStyleguideStubs'
 
 type DocumentDownloadTabProps = {
   document: Document

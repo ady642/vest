@@ -1,6 +1,6 @@
 import DocumentPrimaryCta from '@/modules/DataManipulation/Upload/components/DocumentsUploadModal/Content/Buttons/DocumentPrimaryCta.vue'
 import NattoPrimaryCta from '@/Common/components/Buttons/NattoPrimaryCta.vue'
-import wrapperFactory from 'tests/unit/utils/wrapperFactory'
+import wrapperFactory from 'dummy_data/tests/unit/utils/wrapperFactory'
 
 const createWrapper = (action: string, disabled: boolean) =>
   wrapperFactory(DocumentPrimaryCta, {

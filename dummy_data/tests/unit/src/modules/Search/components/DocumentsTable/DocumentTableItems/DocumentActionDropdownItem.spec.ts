@@ -1,8 +1,8 @@
 import DocumentActionDropdownItem from '@/modules/Search/components/DocumentsTable/DocumentsTableItems/DocumentActionDropdownItem.vue'
-import wrapperFactory from 'tests/unit/utils/wrapperFactory'
+import wrapperFactory from 'dummy_data/tests/unit/utils/wrapperFactory'
 import { ComponentPublicInstance } from 'vue'
 import { VueWrapper } from '@vue/test-utils'
-import { NattoDropdownItemWrapper } from 'tests/unit/src/Common/components/Dropdowns/NattoDropdownItem.spec'
+import { NattoDropdownItemWrapper } from 'dummy_data/tests/unit/src/Common/components/Dropdowns/NattoDropdownItem.spec'
 import NattoDropdownItem from '@/Common/components/Dropdown/NattoDropdownItem.vue'
 
 /****

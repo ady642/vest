@@ -1,10 +1,10 @@
 import FolderActionDropdownItem from '@/modules/Search/components/Navigation/FolderActionsDropdown/FolderActionsDropdownList/FolderActionDropdownItem.vue'
-import wrapperFactory from 'tests/unit/utils/wrapperFactory'
+import wrapperFactory from 'dummy_data/tests/unit/utils/wrapperFactory'
 import { ComponentPublicInstance } from 'vue'
 import { VueWrapper } from '@vue/test-utils'
-import useElementStubs from 'tests/unit/utils/useElementStubs'
+import useElementStubs from 'dummy_data/tests/unit/utils/useElementStubs'
 import NattoDropdownItem from '@/Common/components/Dropdown/NattoDropdownItem.vue'
-import { NattoDropdownItemWrapper } from 'tests/unit/src/Common/components/Dropdowns/NattoDropdownItem.spec'
+import { NattoDropdownItemWrapper } from 'dummy_data/tests/unit/src/Common/components/Dropdowns/NattoDropdownItem.spec'
 import constants from '@/Common/constants'
 
 const { ElDropdownItem } = useElementStubs()

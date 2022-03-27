@@ -1,5 +1,5 @@
 import TrashCardTitle from '@/modules/Trash/components/Cards/TrashCardTitle.vue'
-import wrapperFactory from 'tests/unit/utils/wrapperFactory'
+import wrapperFactory from 'dummy_data/tests/unit/utils/wrapperFactory'
 import { ComponentPublicInstance } from 'vue'
 import { VueWrapper } from '@vue/test-utils'
 

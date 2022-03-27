@@ -1,10 +1,10 @@
 import { ComponentPublicInstance } from 'vue'
 import { VueWrapper } from '@vue/test-utils'
-import wrapperFactory from 'tests/unit/utils/wrapperFactory'
+import wrapperFactory from 'dummy_data/tests/unit/utils/wrapperFactory'
 import { createSearchStoreMocked } from 'tests/unit/__mocks__/storeMock'
 import CommentsTab from '@/modules/Search/components/Drawer/CommentsTab.vue'
-import useStyleguide from 'tests/unit/utils/useStyleguideStubs'
-import useElementStubs from 'tests/unit/utils/useElementStubs'
+import useStyleguide from 'dummy_data/tests/unit/utils/useStyleguideStubs'
+import useElementStubs from 'dummy_data/tests/unit/utils/useElementStubs'
 
 const { ElInput } = useElementStubs()
 

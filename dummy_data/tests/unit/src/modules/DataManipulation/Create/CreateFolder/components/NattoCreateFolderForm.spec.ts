@@ -1,9 +1,9 @@
-import wrapperFactory from 'tests/unit/utils/wrapperFactory'
+import wrapperFactory from 'dummy_data/tests/unit/utils/wrapperFactory'
 import { DOMWrapper, VueWrapper } from '@vue/test-utils'
 import { ComponentPublicInstance } from 'vue'
 import NattoCreateFolderForm from '@/modules/DataManipulation/Create/CreateFolder/components/NattoCreateFolderForm.vue'
 import NattoButton from '@/Common/components/Buttons/NattoButton.vue'
-import useElementStubs from 'tests/unit/utils/useElementStubs'
+import useElementStubs from 'dummy_data/tests/unit/utils/useElementStubs'
 import { createFolderStoreMocked } from 'tests/unit/__mocks__/storeMock'
 import { NattoErrorWrapper } from '../../../../../Common/components/Inputs/NattoError.spec'
 import NattoError from '@/Common/components/Inputs/NattoError.vue'
@@ -11,7 +11,7 @@ import CancelButton from '@/modules/DataManipulation/Create/CreateFolder/compone
 import SaveButton from '@/modules/DataManipulation/Create/CreateFolder/components/SaveButton.vue'
 import { CancelButtonWrapper } from './CancelButton.spec'
 import { SaveButtonWrapper } from './SaveButton.spec'
-import useStyleguideStubs from 'tests/unit/utils/useStyleguideStubs'
+import useStyleguideStubs from 'dummy_data/tests/unit/utils/useStyleguideStubs'
 
 export type NattoCreateFolderFormTypeWrapper = VueWrapper<
   ComponentPublicInstance<

@@ -1,5 +1,5 @@
 import ArboExploreButton from '@/modules/Search/components/Buttons/ArboExploreButton.vue'
-import wrapperFactory from 'tests/unit/utils/wrapperFactory'
+import wrapperFactory from 'dummy_data/tests/unit/utils/wrapperFactory'
 import { VueWrapper } from '@vue/test-utils'
 import NattoShortcutCard from '@/Common/components/Cards/NattoShortcutCard.vue'
 import { ComponentPublicInstance } from 'vue'

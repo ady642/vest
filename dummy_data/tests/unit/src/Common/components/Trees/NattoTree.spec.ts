@@ -1,22 +1,22 @@
 
             import NattoTree from '/home/adri/Desktop/Projects/unittestgen/dummy_data/src/Common/components/Trees/NattoTree.vue'
-            import wrapperFactory from 'tests/unit/utils/wrapperFactory'
-            import useElement from 'tests/unit/utils/useElementStubs'
+            import wrapperFactory from 'dummy_data/tests/unit/utils/wrapperFactory'
+            import useElement from 'dummy_data/tests/unit/utils/useElementStubs'
             import { VueWrapper } from '@vue/test-utils'
-        
+
             const createWrapper = ({
-                
-              
+
+
             } = {}) =>
               wrapperFactory(NattoTree )
-              
+
             let wrapper = createWrapper()
-        
+
                 let findElTree = (wrapper) => wrapper.findComponent(ElTree)
-        
-                
+
+
                     let ElTreeWrapper = findElTree(wrapper)
-                
+
 
                 describe(NattoTree, () => {
                      beforeEach(() => {
@@ -31,13 +31,12 @@
 ,expect(ElTreeWrapper.attributes('empty-text')).toBe(true)
  })
                       })
-                      
-                             
-                      
-                    
-                        
-                    
+
+
+
+
+
+
                 })
-                
-                
-        
+
+

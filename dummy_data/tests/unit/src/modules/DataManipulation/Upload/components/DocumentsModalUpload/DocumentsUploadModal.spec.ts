@@ -1,5 +1,5 @@
 port DocumentsUploadModal from '@/modules/DataManipulation/Upload/components/DocumentsUploadModal/DocumentsUploadModal.vue'
-import wrapperFactory from 'tests/unit/utils/wrapperFactory'
+import wrapperFactory from 'dummy_data/tests/unit/utils/wrapperFactory'
 import { flushPromises, VueWrapper } from '@vue/test-utils'
 import FileUpload, {
   StateUpload
@@ -11,7 +11,7 @@ import Upload from '@/modules/DataManipulation/Upload/store'
 import DataManipulation from '@/modules/DataManipulation/store'
 import Search from '@/modules/Search/store'
 import RootStateInterface from '@/store/types/rootState'
-import useFoldersData from 'tests/unit/src/modules/Search/mocks/FoldersDataMock'
+import useFoldersData from 'dummy_data/tests/unit/src/modules/Search/mocks/FoldersDataMock'
 import { trackEventFactory } from '@/Common/helpers/analyticsLog'
 
 jest.mock('@/Common/helpers/analyticsLog', () => ({

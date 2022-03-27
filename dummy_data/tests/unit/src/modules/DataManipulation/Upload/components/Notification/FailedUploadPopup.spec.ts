@@ -1,6 +1,6 @@
 import FailedUploadPopup from '@/modules/DataManipulation/Upload/components/Notification/FailedUploadPopup.vue'
-import wrapperFactory from 'tests/unit/utils/wrapperFactory'
-import useStyleguide from 'tests/unit/utils/useStyleguideStubs'
+import wrapperFactory from 'dummy_data/tests/unit/utils/wrapperFactory'
+import useStyleguide from 'dummy_data/tests/unit/utils/useStyleguideStubs'
 import * as translationHelper from '@/Common/hooks/useTranslation'
 
 const { MpButton } = useStyleguide()

@@ -1,7 +1,7 @@
 import { VueWrapper } from '@vue/test-utils'
 import { ComponentPublicInstance } from 'vue'
-import { createTrashStoreMock } from 'tests/unit/__mocks__/storeMock/createTrashStoreMock'
-import wrapperFactory from 'tests/unit/utils/wrapperFactory'
+import { createTrashStoreMock } from 'dummy_data/tests/unit/__mocks__/storeMock/createTrashStoreMock'
+import wrapperFactory from 'dummy_data/tests/unit/utils/wrapperFactory'
 import InProgressPopup from '@/modules/Trash/components/Notification/Elements/InProgressPopup.vue'
 import * as translationHelper from '@/Common/hooks/useTranslation'
 

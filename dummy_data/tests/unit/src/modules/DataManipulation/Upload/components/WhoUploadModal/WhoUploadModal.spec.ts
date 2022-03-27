@@ -1,10 +1,10 @@
 import WhoUploadModal from '@/modules/DataManipulation/Upload/components/WhoUploadModal/WhoUploadModal.vue'
 import NattoUploadTypePopup from '@/Common/components/Modals/NattoUploadTypePopup.vue'
-import wrapperFactory from 'tests/unit/utils/wrapperFactory'
+import wrapperFactory from 'dummy_data/tests/unit/utils/wrapperFactory'
 import { VueWrapper } from '@vue/test-utils'
 import { ComponentPublicInstance } from 'vue'
 import Folders from '@/modules/Search/models/Folders/Inputs/Folders'
-import useElement from 'tests/unit/utils/useElementStubs'
+import useElement from 'dummy_data/tests/unit/utils/useElementStubs'
 
 const { ElButton } = useElement()
 

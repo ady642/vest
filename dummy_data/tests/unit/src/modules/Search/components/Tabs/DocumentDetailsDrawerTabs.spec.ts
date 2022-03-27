@@ -1,6 +1,6 @@
 import DocumentDetailsDrawerTabs from '@/modules/Search/components/Tabs/DocumentDetailsDrawerTabs.vue'
 import NattoTabs from '@/Common/components/Tabs/NattoTabs.vue'
-import wrapperFactory from 'tests/unit/utils/wrapperFactory'
+import wrapperFactory from 'dummy_data/tests/unit/utils/wrapperFactory'
 import { ComponentPublicInstance } from 'vue'
 import { VueWrapper } from '@vue/test-utils'
 import * as translationHelper from '@/Common/hooks/useTranslation'

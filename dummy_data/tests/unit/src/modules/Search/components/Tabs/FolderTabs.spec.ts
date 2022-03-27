@@ -1,12 +1,12 @@
 import FolderTabs from '@/modules/Search/components/Tabs/FolderTabs.vue'
-import wrapperFactory from 'tests/unit/utils/wrapperFactory'
+import wrapperFactory from 'dummy_data/tests/unit/utils/wrapperFactory'
 import { ComponentPublicInstance } from 'vue'
 import { VueWrapper } from '@vue/test-utils'
 
 import Folders from '@/modules/Search/models/Folders/Inputs/Folders'
 import * as translationHelper from '@/Common/hooks/useTranslation'
 import NattoTabs from '@/Common/components/Tabs/NattoTabs.vue'
-import useElementStubs from 'tests/unit/utils/useElementStubs'
+import useElementStubs from 'dummy_data/tests/unit/utils/useElementStubs'
 
 export type FolderTabsTypeWrapper = VueWrapper<
   ComponentPublicInstance<

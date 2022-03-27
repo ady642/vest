@@ -2,7 +2,7 @@ import PreviewModalHeader from '@/modules/Search/components/Modals/PreviewModal/
 import NattoDialog from '@/Common/components/Modals/NattoDialog.vue'
 import Document from '@/modules/Search/models/Documents/Inputs/Document'
 import PreviewModal from '@/modules/Search/components/Modals/PreviewModal/PreviewModal.vue'
-import wrapperFactory from 'tests/unit/utils/wrapperFactory'
+import wrapperFactory from 'dummy_data/tests/unit/utils/wrapperFactory'
 import { flushPromises, VueWrapper } from '@vue/test-utils'
 import { ComponentPublicInstance } from 'vue'
 import { createDeleteFileStoreMocked } from 'tests/unit/__mocks__/storeMock'

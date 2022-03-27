@@ -1,5 +1,5 @@
 import DocumentCreationDateItem from '@/modules/Search/components/DocumentsTable/DocumentsTableItems/DocumentCreationDateItem.vue'
-import wrapperFactory from 'tests/unit/utils/wrapperFactory'
+import wrapperFactory from 'dummy_data/tests/unit/utils/wrapperFactory'
 import NattoDate from '@/Common/components/Dates/NattoDate.vue'
 
 const createWrapper = ({ creationDate = '' } = {}) =>

@@ -3,8 +3,8 @@ import { VueWrapper } from '@vue/test-utils'
 
 import NattoHighlighter from '@/Common/components/Hightlighter/NattoHighlighter.vue'
 
-import wrapperFactory from 'tests/unit/utils/wrapperFactory'
-import useStyleguideStubs from 'tests/unit/utils/useStyleguideStubs'
+import wrapperFactory from 'dummy_data/tests/unit/utils/wrapperFactory'
+import useStyleguideStubs from 'dummy_data/tests/unit/utils/useStyleguideStubs'
 
 /****
  * Wrapper types

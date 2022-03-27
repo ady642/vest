@@ -1,10 +1,10 @@
-import wrapperFactory from 'tests/unit/utils/wrapperFactory'
+import wrapperFactory from 'dummy_data/tests/unit/utils/wrapperFactory'
 import { VueWrapper } from '@vue/test-utils'
 import { ComponentPublicInstance } from 'vue'
 import NattoIcon from '@/Common/components/Icons/NattoIcon.vue'
 import NattoUploadBtn from '@/Common/components/Upload/Buttons/NattoUploadBtn.vue'
 import NattoUploadFilesBtn from '@/Common/components/Upload/Buttons/NattoUploadFilesBtn.vue'
-import useStyleguide from 'tests/unit/utils/useStyleguideStubs'
+import useStyleguide from 'dummy_data/tests/unit/utils/useStyleguideStubs'
 
 type NattoUploadFilesProps = {
   icon: string

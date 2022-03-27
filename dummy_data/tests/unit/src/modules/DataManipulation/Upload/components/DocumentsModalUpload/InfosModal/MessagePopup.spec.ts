@@ -1,8 +1,8 @@
-import wrapperFactory from 'tests/unit/utils/wrapperFactory'
+import wrapperFactory from 'dummy_data/tests/unit/utils/wrapperFactory'
 import { VueWrapper } from '@vue/test-utils'
 import MessagePopup from '@/modules/DataManipulation/Upload/components/InfosModal/MessagePopup.vue'
 import NattoDialogPopup from '@/Common/components/Modals/NattoDialogPopup.vue'
-import useElement from 'tests/unit/utils/useElementStubs'
+import useElement from 'dummy_data/tests/unit/utils/useElementStubs'
 
 const { ElButton, ElDialog } = useElement()
 

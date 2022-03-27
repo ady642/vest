@@ -1,6 +1,6 @@
 import { ComponentPublicInstance } from 'vue'
 import { DOMWrapper, VueWrapper } from '@vue/test-utils'
-import wrapperFactory from 'tests/unit/utils/wrapperFactory'
+import wrapperFactory from 'dummy_data/tests/unit/utils/wrapperFactory'
 import DocumentDetailsTab from '@/modules/Search/components/Drawer/DocumentDetailsTab.vue'
 import NattoDate from '@/Common/components/Dates/NattoDate.vue'
 import constants from '@/Common/constants'

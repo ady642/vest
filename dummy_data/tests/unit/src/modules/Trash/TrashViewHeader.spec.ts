@@ -1,8 +1,8 @@
-import wrapperFactory from 'tests/unit/utils/wrapperFactory'
+import wrapperFactory from 'dummy_data/tests/unit/utils/wrapperFactory'
 import { VueWrapper } from '@vue/test-utils'
 import { ComponentPublicInstance } from 'vue'
 import TrashHeaderBackButton from '@/modules/Trash/components/Header/TrashHeaderBackButton.vue'
-import { createTrashStoreMock } from 'tests/unit/__mocks__/storeMock/createTrashStoreMock'
+import { createTrashStoreMock } from 'dummy_data/tests/unit/__mocks__/storeMock/createTrashStoreMock'
 import TrashViewHeader from '@/modules/Trash/components/Header/TrashViewHeader.vue'
 import { router } from '@kpmg/mypulse-shared-dependencies'
 

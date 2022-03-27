@@ -1,6 +1,6 @@
 import DocumentIcon from '@/Common/components/Icons/DocumentIcon.vue'
 import NattoIcon from '@/Common/components/Icons/NattoIcon.vue'
-import wrapperFactory from 'tests/unit/utils/wrapperFactory'
+import wrapperFactory from 'dummy_data/tests/unit/utils/wrapperFactory'
 import { VueWrapper } from '@vue/test-utils'
 import { ComponentPublicInstance } from 'vue'
 import { NattoIconWrapperType } from 'tests/unit/src/Common/components/Icons/NattoIcon.spec'

@@ -1,6 +1,6 @@
 import DocumentsInAllFoldersBar from '@/modules/Search/components/Filters/InfoBars/DocumentsInAllFoldersBar.vue'
-import wrapperFactory from 'tests/unit/utils/wrapperFactory'
-import { InfoBarWrapper } from 'tests/unit/src/modules/Search/components/Filters/InfoBars/InfoBar.spec'
+import wrapperFactory from 'dummy_data/tests/unit/utils/wrapperFactory'
+import { InfoBarWrapper } from 'dummy_data/tests/unit/src/modules/Search/components/Filters/InfoBars/InfoBar.spec'
 import InfoBar from '@/modules/Search/components/Filters/InfoBars/InfoBar.vue'
 import { VueWrapper } from '@vue/test-utils'
 import { ComponentPublicInstance } from 'vue'

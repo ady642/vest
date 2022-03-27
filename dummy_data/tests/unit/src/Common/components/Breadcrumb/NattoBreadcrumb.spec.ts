@@ -1,7 +1,7 @@
 import NattoBreadcrumb from '@/Common/components/Breadcrumb/NattoBreadcrumb.vue'
-import wrapperFactory from 'tests/unit/utils/wrapperFactory'
+import wrapperFactory from 'dummy_data/tests/unit/utils/wrapperFactory'
 import { VueWrapper } from '@vue/test-utils'
-import useStyleguideStubs from 'tests/unit/utils/useStyleguideStubs'
+import useStyleguideStubs from 'dummy_data/tests/unit/utils/useStyleguideStubs'
 
 const { MpBreadcrumb } = useStyleguideStubs()
 

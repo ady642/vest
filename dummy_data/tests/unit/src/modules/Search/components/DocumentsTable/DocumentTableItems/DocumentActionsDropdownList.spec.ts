@@ -1,6 +1,6 @@
 import DocumentActionDropdownItem from '@/modules/Search/components/DocumentsTable/DocumentsTableItems/DocumentActionDropdownItem.vue'
 import DocumentActionsDropdownList from '@/modules/Search/components/DocumentsTable/DocumentsTableItems/DocumentActionsDropdownList.vue'
-import wrapperFactory from 'tests/unit/utils/wrapperFactory'
+import wrapperFactory from 'dummy_data/tests/unit/utils/wrapperFactory'
 import { VueWrapper } from '@vue/test-utils'
 import { createDeleteFileStoreMocked } from 'tests/unit/__mocks__/storeMock'
 import { ITEMS } from '@/Common/types/actionItemTypes'

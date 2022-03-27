@@ -1,5 +1,5 @@
 import FilePathText from '@/Common/components/Text/FilePathText.vue'
-import wrapperFactory from 'tests/unit/utils/wrapperFactory'
+import wrapperFactory from 'dummy_data/tests/unit/utils/wrapperFactory'
 import { DOMWrapper, VueWrapper } from '@vue/test-utils'
 import { ComponentPublicInstance } from 'vue'
 

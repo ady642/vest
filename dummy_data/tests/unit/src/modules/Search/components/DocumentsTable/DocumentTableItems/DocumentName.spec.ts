@@ -1,11 +1,11 @@
 import DocumentNameItem from '@/modules/Search/components/DocumentsTable/DocumentsTableItems/DocumentNameItem.vue'
-import wrapperFactory from 'tests/unit/utils/wrapperFactory'
+import wrapperFactory from 'dummy_data/tests/unit/utils/wrapperFactory'
 import { VueWrapper } from '@vue/test-utils'
 import { ComponentPublicInstance } from 'vue'
 import NattoHighlighter from '@/Common/components/Hightlighter/NattoHighlighter.vue'
 import FilenameText from '@/Common/components/Text/FilenameText.vue'
-import { FileNameTextWrapper } from 'tests/unit/src/Common/components/Text/FilenameText.spec'
-import { NattoHighlighterWrapper } from 'tests/unit/src/Common/components/Highlighter/NattoHighlighter.spec'
+import { FileNameTextWrapper } from 'dummy_data/tests/unit/src/Common/components/Text/FilenameText.spec'
+import { NattoHighlighterWrapper } from 'dummy_data/tests/unit/src/Common/components/Highlighter/NattoHighlighter.spec'
 
 /****
  * Wrapper types

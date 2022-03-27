@@ -1,4 +1,4 @@
-import wrapperFactory from 'tests/unit/utils/wrapperFactory'
+import wrapperFactory from 'dummy_data/tests/unit/utils/wrapperFactory'
 import { ComponentPublicInstance } from '@vue/runtime-core'
 import TrashCard from '@/modules/Trash/components/Cards/TrashCard.vue'
 import ArboDescription from '@/modules/Search/components/Cards/ArboDescription.vue'
@@ -6,7 +6,7 @@ import { VueWrapper } from '@vue/test-utils'
 import TrashCardTitle from '@/modules/Trash/components/Cards/TrashCardTitle.vue'
 import NattoCard from '@/Common/components/Cards/NattoCard.vue'
 import { TrashCardTitleWrapper } from './TrashCardTitle.spec'
-import useElementStubs from 'tests/unit/utils/useElementStubs'
+import useElementStubs from 'dummy_data/tests/unit/utils/useElementStubs'
 import constants from '@/Common/constants'
 
 type TrashCardProps = {}

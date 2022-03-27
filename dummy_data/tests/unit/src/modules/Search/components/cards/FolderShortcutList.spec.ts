@@ -1,7 +1,7 @@
 import FolderShortcutList from '@/modules/Search/components/Cards/FolderShortcutList.vue'
 import FolderCard from '@/modules/Search/components/Cards/FolderCard.vue'
 import Folders from '@/modules/Search/models/Folders/Inputs/Folders'
-import wrapperFactory from 'tests/unit/utils/wrapperFactory'
+import wrapperFactory from 'dummy_data/tests/unit/utils/wrapperFactory'
 import { VueWrapper } from '@vue/test-utils'
 import ArboExploreButton from '@/modules/Search/components/Buttons/ArboExploreButton.vue'
 

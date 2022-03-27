@@ -1,7 +1,7 @@
-import wrapperFactory from 'tests/unit/utils/wrapperFactory'
+import wrapperFactory from 'dummy_data/tests/unit/utils/wrapperFactory'
 import { VueWrapper } from '@vue/test-utils'
 import SecondaryCtaButton from '@/modules/DataManipulation/Upload/components/DocumentsUploadModal/Content/Buttons/SecondaryCtaButton.vue'
-import useStyleguide from 'tests/unit/utils/useStyleguideStubs'
+import useStyleguide from 'dummy_data/tests/unit/utils/useStyleguideStubs'
 
 const { MpButton } = useStyleguide()
 

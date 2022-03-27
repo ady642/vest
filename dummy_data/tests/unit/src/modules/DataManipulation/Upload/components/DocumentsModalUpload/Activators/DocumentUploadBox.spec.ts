@@ -1,4 +1,4 @@
-import wrapperFactory from 'tests/unit/utils/wrapperFactory'
+import wrapperFactory from 'dummy_data/tests/unit/utils/wrapperFactory'
 import DocumentsUploadBox from '@/modules/DataManipulation/Upload/components/DocumentsUploadModal/Activators/DocumentsUploadBox.vue'
 import NattoUploadBox from '@/Common/components/Upload/Box/NattoUploadBox.vue'
 

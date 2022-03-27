@@ -1,7 +1,7 @@
 import ShortcutsGrid from '@/modules/Search/components/Shortcuts/ShortcutsGrid.vue'
 import ShortcutCard from '@/modules/Search/components/Shortcuts/ShortcutCard.vue'
 import Folders from '@/modules/Search/models/Folders/Inputs/Folders'
-import wrapperFactory from 'tests/unit/utils/wrapperFactory'
+import wrapperFactory from 'dummy_data/tests/unit/utils/wrapperFactory'
 import { VueWrapper } from '@vue/test-utils'
 
 const createWrapper = (folders = Folders.loading()) =>

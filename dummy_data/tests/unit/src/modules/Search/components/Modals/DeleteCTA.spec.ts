@@ -1,12 +1,12 @@
 import DeleteCTA from '@/modules/Search/components/Modals/PreviewModal/PreviewModalHeader/CTAs/DeleteCTA.vue'
-import wrapperFactory from 'tests/unit/utils/wrapperFactory'
+import wrapperFactory from 'dummy_data/tests/unit/utils/wrapperFactory'
 import { ComponentPublicInstance } from 'vue'
 import { VueWrapper } from '@vue/test-utils'
 import {
   findLoadingIcon,
   findMpIcon,
   findPreviewCTAContainer
-} from 'tests/unit/utils/finders'
+} from 'dummy_data/tests/unit/utils/finders'
 import useStyleguideStubs from '../../../../../utils/useStyleguideStubs'
 
 /****

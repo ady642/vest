@@ -1,10 +1,10 @@
 import MainHeader from '@/modules/Search/components/Headers/MainHeader.vue'
-import wrapperFactory from 'tests/unit/utils/wrapperFactory'
+import wrapperFactory from 'dummy_data/tests/unit/utils/wrapperFactory'
 import { VueWrapper } from '@vue/test-utils'
 import { ComponentPublicInstance } from '@vue/runtime-core'
 import NattoHeader from '@/Common/components/Header/NattoHeader.vue'
 import DocumentsUploadBtn from '@/modules/DataManipulation/Upload/components/DocumentsUploadModal/Activators/DocumentsUploadBtn.vue'
-import useStyleguideStubs from 'tests/unit/utils/useStyleguideStubs'
+import useStyleguideStubs from 'dummy_data/tests/unit/utils/useStyleguideStubs'
 
 const { MpTitle } = useStyleguideStubs()
 

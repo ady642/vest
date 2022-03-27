@@ -1,5 +1,5 @@
 import NattoDate from '@/Common/components/Dates/NattoDate.vue'
-import wrapperFactory from 'tests/unit/utils/wrapperFactory'
+import wrapperFactory from 'dummy_data/tests/unit/utils/wrapperFactory'
 
 const createWrapper = ({ date = '', format = '' } = {}) =>
   wrapperFactory(NattoDate, {

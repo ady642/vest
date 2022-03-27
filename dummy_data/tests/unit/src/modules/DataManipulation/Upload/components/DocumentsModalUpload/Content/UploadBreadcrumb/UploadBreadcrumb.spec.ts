@@ -1,10 +1,10 @@
-import wrapperFactory from 'tests/unit/utils/wrapperFactory'
+import wrapperFactory from 'dummy_data/tests/unit/utils/wrapperFactory'
 import {
   UploadBreadcrumbProps,
   UploadBreadcrumbWrapper
 } from './UploadBreadcrumbTypes'
 import { DOMWrapper, VueWrapper } from '@vue/test-utils'
-import useFoldersData from 'tests/unit/src/modules/Search/mocks/FoldersDataMock'
+import useFoldersData from 'dummy_data/tests/unit/src/modules/Search/mocks/FoldersDataMock'
 import NattoBreadcrumb from '@/Common/components/Breadcrumb/NattoBreadcrumb.vue'
 import UploadBreadcrumb from '@/modules/DataManipulation/Upload/components/DocumentsUploadModal/Content/UploadBreadcrumb.vue'
 

@@ -1,9 +1,9 @@
 import NattoSelect from '@/Common/components/Select/NattoSelect.vue'
 import SelectOption from '@/Common/models/Select/SelectOption'
 
-import wrapperFactory from 'tests/unit/utils/wrapperFactory'
+import wrapperFactory from 'dummy_data/tests/unit/utils/wrapperFactory'
 import { VueWrapper } from '@vue/test-utils'
-import useElement from 'tests/unit/utils/useElementStubs'
+import useElement from 'dummy_data/tests/unit/utils/useElementStubs'
 
 const { ElSelect, ElOption } = useElement()
 

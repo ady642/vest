@@ -1,7 +1,7 @@
-import wrapperFactory from 'tests/unit/utils/wrapperFactory'
+import wrapperFactory from 'dummy_data/tests/unit/utils/wrapperFactory'
 import { VueWrapper } from '@vue/test-utils'
-import useFoldersData from 'tests/unit/src/modules/Search/mocks/FoldersDataMock'
-import useElementStubs from 'tests/unit/utils/useElementStubs'
+import useFoldersData from 'dummy_data/tests/unit/src/modules/Search/mocks/FoldersDataMock'
+import useElementStubs from 'dummy_data/tests/unit/utils/useElementStubs'
 import NattoBreadcrumb from '@/Common/components/Breadcrumb/NattoBreadcrumb.vue'
 import ArboHeader from '@/modules/Search/components/Headers/ArboHeader.vue'
 import DocumentsUploadBtn from '@/modules/DataManipulation/Upload/components/DocumentsUploadModal/Activators/DocumentsUploadBtn.vue'
@@ -11,7 +11,7 @@ import DocumentsCreateFolderButton from '@/modules/Search/components/Buttons/Doc
 import CreateFolderModal from '@/modules/Search/components/Modals/CreateFolderModal.vue'
 import { ComponentPublicInstance } from 'vue'
 import NattoHeader from '@/Common/components/Header/NattoHeader.vue'
-import useStyleguideStubs from 'tests/unit/utils/useStyleguideStubs'
+import useStyleguideStubs from 'dummy_data/tests/unit/utils/useStyleguideStubs'
 import ChevronLeftIcon from '@/Common/components/Icons/ChevronLeftIcon.vue'
 
 export type CreateFolderModalTypeWrapper = VueWrapper<

@@ -1,4 +1,4 @@
-import wrapperFactory from 'tests/unit/utils/wrapperFactory'
+import wrapperFactory from 'dummy_data/tests/unit/utils/wrapperFactory'
 import { DOMWrapper } from '@vue/test-utils'
 import ArboViewLayout from '@/modules/Search/components/Layouts/ArboViewLayout.vue'
 import BasicLayout from '@/modules/Search/components/Layouts/BasicLayout.vue'

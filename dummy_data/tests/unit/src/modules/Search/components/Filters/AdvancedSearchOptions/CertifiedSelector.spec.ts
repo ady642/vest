@@ -1,8 +1,8 @@
 import CertifiedSelector from '@/modules/Search/components/Filters/AdvancedSearchOptions/CertifiedSelector.vue'
-import wrapperFactory from 'tests/unit/utils/wrapperFactory'
+import wrapperFactory from 'dummy_data/tests/unit/utils/wrapperFactory'
 import { ComponentPublicInstance } from 'vue'
 import { VueWrapper } from '@vue/test-utils'
-import { findNattoRadioGroup } from 'tests/unit/utils/finders'
+import { findNattoRadioGroup } from 'dummy_data/tests/unit/utils/finders'
 
 /****
  * Wrapper types

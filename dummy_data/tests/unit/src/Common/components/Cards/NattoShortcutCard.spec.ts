@@ -1,10 +1,10 @@
 import NattoShortcutCard from '@/Common/components/Cards/NattoShortcutCard.vue'
-import wrapperFactory from 'tests/unit/utils/wrapperFactory'
+import wrapperFactory from 'dummy_data/tests/unit/utils/wrapperFactory'
 import { ComponentPublicInstance } from 'vue'
 import { VueWrapper } from '@vue/test-utils'
 import NattoCard from '@/Common/components/Cards/NattoCard.vue'
-import useStyleguide from 'tests/unit/utils/useStyleguideStubs'
-import useElement from 'tests/unit/utils/useElementStubs'
+import useStyleguide from 'dummy_data/tests/unit/utils/useStyleguideStubs'
+import useElement from 'dummy_data/tests/unit/utils/useElementStubs'
 
 const { MpIcon } = useStyleguide()
 const { ElCard } = useElement()

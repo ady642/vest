@@ -1,8 +1,8 @@
 import NattoPagination from '@/Common/components/Paging/NattoPagination.vue'
-import wrapperFactory from 'tests/unit/utils/wrapperFactory'
+import wrapperFactory from 'dummy_data/tests/unit/utils/wrapperFactory'
 import { VueWrapper } from '@vue/test-utils'
 import { ComponentPublicInstance } from 'vue'
-import useStyleguideStubs from 'tests/unit/utils/useStyleguideStubs'
+import useStyleguideStubs from 'dummy_data/tests/unit/utils/useStyleguideStubs'
 
 type NattoPaginationProps = {
   itemsTotal: number

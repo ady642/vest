@@ -1,10 +1,10 @@
 import { ComponentPublicInstance } from 'vue'
 import { VueWrapper } from '@vue/test-utils'
 import NattoFoldersBrowser from '@/Common/components/Navigation/NattoFoldersBrowser.vue'
-import useFoldersData from 'tests/unit/src/modules/Search/mocks/FoldersDataMock'
-import wrapperFactory from 'tests/unit/utils/wrapperFactory'
+import useFoldersData from 'dummy_data/tests/unit/src/modules/Search/mocks/FoldersDataMock'
+import wrapperFactory from 'dummy_data/tests/unit/utils/wrapperFactory'
 import Folder from '@/modules/Search/models/Folders/Inputs/Folder'
-import useElement from 'tests/unit/utils/useElementStubs'
+import useElement from 'dummy_data/tests/unit/utils/useElementStubs'
 import GedSyncStatusIcon from '@/Common/components/Icons/GedSyncStatusIcon.vue'
 
 const { FoldersData } = useFoldersData()

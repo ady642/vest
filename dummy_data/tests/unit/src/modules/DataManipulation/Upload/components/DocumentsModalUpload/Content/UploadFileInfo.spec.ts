@@ -1,7 +1,7 @@
 import { VueWrapper } from '@vue/test-utils'
 import { ComponentPublicInstance } from 'vue'
 
-import wrapperFactory from 'tests/unit/utils/wrapperFactory'
+import wrapperFactory from 'dummy_data/tests/unit/utils/wrapperFactory'
 import FileUpload, {
   StateUpload
 } from '@/modules/DataManipulation/Upload/models/Files/Inputs/FileUpload'

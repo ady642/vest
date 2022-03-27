@@ -1,4 +1,4 @@
-import { createDocument } from 'tests/unit/__mocks__/Document/createDocument'
+import { createDocument } from 'dummy_data/tests/unit/__mocks__/Document/createDocument'
 
 import RootStateInterface from '@/store/types/rootState'
 import getters from '@/modules/DataManipulation/Delete/DeleteFile/store/getters'

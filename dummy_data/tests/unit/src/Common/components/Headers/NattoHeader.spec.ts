@@ -1,6 +1,6 @@
 import NattoHeader from '@/Common/components/Header/NattoHeader.vue'
-import wrapperFactory from 'tests/unit/utils/wrapperFactory'
-import useStyleguideStubs from 'tests/unit/utils/useStyleguideStubs'
+import wrapperFactory from 'dummy_data/tests/unit/utils/wrapperFactory'
+import useStyleguideStubs from 'dummy_data/tests/unit/utils/useStyleguideStubs'
 
 const { MpTitle } = useStyleguideStubs()
 

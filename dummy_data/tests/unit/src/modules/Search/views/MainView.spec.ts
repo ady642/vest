@@ -1,7 +1,7 @@
 import { VueWrapper, DOMWrapper } from '@vue/test-utils'
 import { ComponentPublicInstance, DirectiveBinding } from 'vue'
 import { Store } from 'vuex'
-import wrapperFactory from 'tests/unit/utils/wrapperFactory'
+import wrapperFactory from 'dummy_data/tests/unit/utils/wrapperFactory'
 import MainViewLayout from '@/modules/Search/components/Layouts/MainViewLayout.vue'
 import BasicLayout from '@/modules/Search/components/Layouts/BasicLayout.vue'
 import MainView from '@/modules/Search/views/MainView.vue'
@@ -11,7 +11,7 @@ import FolderTabs from '@/modules/Search/components/Tabs/FolderTabs.vue'
 import DocumentsSearchFilters from '@/modules/Search/components/Filters/DocumentsSearchFilters.vue'
 import { DocumentsSearchFiltersWrapper } from '../components/Filters/DocumentsSearchFilters.spec'
 import DocumentsFilters from '@/modules/Search/models/Documents/Query/DocumentsFilters'
-import { DocumentsTableWrapper } from 'tests/unit/src/modules/Search/components/DocumentsTable/DocumentsTable.spec'
+import { DocumentsTableWrapper } from 'dummy_data/tests/unit/src/modules/Search/components/DocumentsTable/DocumentsTable.spec'
 import DocumentsTable from '@/modules/Search/components/DocumentsTable/DocumentsTable.vue'
 import Documents from '@/modules/Search/models/Documents/Inputs/Documents'
 import { documentAPIMock } from '../mocks/DocumentAPIMock'
@@ -27,16 +27,16 @@ import ArboCardList from '@/modules/Search/components/Cards/ArboCardList.vue'
 import useFoldersData from '../mocks/FoldersDataMock'
 import TrashCard from '@/modules/Trash/components/Cards/TrashCard.vue'
 import MailToGedModal from '@/modules/DataManipulation/MailToGed/components/Modals/MailToGedModal.vue'
-import useMailToGedData from 'tests/unit/src/modules/DataManipulation/MailToGed/mocks/MailToGedDataMock'
+import useMailToGedData from 'dummy_data/tests/unit/src/modules/DataManipulation/MailToGed/mocks/MailToGedDataMock'
 import {
   pageViewFactory,
   trackEventFactory
 } from '@/Common/helpers/analyticsLog'
-import { createFileStoreMock } from 'tests/unit/__mocks__/storeMock/createStoreMock'
+import { createFileStoreMock } from 'dummy_data/tests/unit/__mocks__/storeMock/createStoreMock'
 import {
   findDocumentDetailsDrawer,
   findMailToGedCard
-} from 'tests/unit/utils/finders'
+} from 'dummy_data/tests/unit/utils/finders'
 import Document from '@/modules/Search/models/Documents/Inputs/Document'
 import { DocumentFromAPI } from '@/Common/types/document'
 

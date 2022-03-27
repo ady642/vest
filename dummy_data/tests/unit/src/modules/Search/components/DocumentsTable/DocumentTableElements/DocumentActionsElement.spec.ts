@@ -1,5 +1,5 @@
 import DocumentActionsElement from '@/modules/Search/components/DocumentsTable/DocumentsTableElements/DocumentActionsElement.vue'
-import wrapperFactory from 'tests/unit/utils/wrapperFactory'
+import wrapperFactory from 'dummy_data/tests/unit/utils/wrapperFactory'
 import { ComponentPublicInstance } from 'vue'
 import { VueWrapper } from '@vue/test-utils'
 import Document from '@/modules/Search/models/Documents/Inputs/Document'

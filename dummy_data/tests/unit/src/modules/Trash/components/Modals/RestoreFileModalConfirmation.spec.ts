@@ -1,9 +1,9 @@
 import RestoreFileModalConfirmation from '@/modules/Trash/components/Modals/RestoreFileModalConfirmation.vue'
-import wrapperFactory from 'tests/unit/utils/wrapperFactory'
+import wrapperFactory from 'dummy_data/tests/unit/utils/wrapperFactory'
 import { ComponentPublicInstance } from 'vue'
 import { VueWrapper } from '@vue/test-utils'
 import NattoDialogPopup from '@/Common/components/Modals/NattoDialogPopup.vue'
-import { createTrashStoreMock } from 'tests/unit/__mocks__/storeMock/createTrashStoreMock'
+import { createTrashStoreMock } from 'dummy_data/tests/unit/__mocks__/storeMock/createTrashStoreMock'
 
 /****
  * Wrapper types

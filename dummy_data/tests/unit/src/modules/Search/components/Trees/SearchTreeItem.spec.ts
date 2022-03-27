@@ -1,5 +1,5 @@
 import SearchTreeItem from '@/modules/Search/components/Trees/SearchTreeItem.vue'
-import wrapperFactory from 'tests/unit/utils/wrapperFactory'
+import wrapperFactory from 'dummy_data/tests/unit/utils/wrapperFactory'
 import { ComponentPublicInstance } from 'vue'
 import { VueWrapper } from '@vue/test-utils'
 import Folder from '@/modules/Search/models/Folders/Inputs/Folder'

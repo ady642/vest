@@ -1,5 +1,5 @@
 import NattoDropZone from '@/Common/components/Upload/NattoDropZone.vue'
-import wrapperFactory from 'tests/unit/utils/wrapperFactory'
+import wrapperFactory from 'dummy_data/tests/unit/utils/wrapperFactory'
 import * as dataTransferHelper from '@/Common/helpers/dataTransferHelper'
 
 const fileMock = new File([''], 'filename', { type: 'text/html' })

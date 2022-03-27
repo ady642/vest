@@ -7,7 +7,7 @@ import DataManipulation from '@/modules/DataManipulation/store'
 import TrashDocumentsPaginator from '@/modules/Trash/models/Query/TrashDocumentsPaginator'
 import constants from '@/Common/constants'
 import TrashDocuments from '@/modules/Trash/models/Inputs/TrashDocuments'
-import { TrashDocumentAPIMockList } from 'tests/unit/src/modules/Trash/mocks/TrashDocumentAPIMock'
+import { TrashDocumentAPIMockList } from 'dummy_data/tests/unit/src/modules/Trash/mocks/TrashDocumentAPIMock'
 
 const paginatorMock = new TrashDocumentsPaginator({
   pageNumber: 1,

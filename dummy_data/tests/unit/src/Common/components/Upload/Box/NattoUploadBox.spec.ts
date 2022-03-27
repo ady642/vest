@@ -1,7 +1,7 @@
 import NattoUploadBox from '@/Common/components/Upload/Box/NattoUploadBox.vue'
 import UploadBoxIcon from '@/Common/components/Icons/UploadBoxIcon.vue'
 import WaitIcon from '@/Common/components/Icons/WaitIcon.vue'
-import wrapperFactory from 'tests/unit/utils/wrapperFactory'
+import wrapperFactory from 'dummy_data/tests/unit/utils/wrapperFactory'
 import { VueWrapper } from '@vue/test-utils'
 import NattoDropZone from '@/Common/components/Upload/NattoDropZone.vue'
 import { ComponentPublicInstance } from 'vue'

@@ -1,8 +1,8 @@
 import SearchDatePicker from '@/modules/Search/components/Filters/AdvancedSearchOptions/SearchDatePicker.vue'
-import wrapperFactory from 'tests/unit/utils/wrapperFactory'
+import wrapperFactory from 'dummy_data/tests/unit/utils/wrapperFactory'
 import { ComponentPublicInstance } from 'vue'
 import { VueWrapper } from '@vue/test-utils'
-import { findNattoDatePicker } from 'tests/unit/utils/finders'
+import { findNattoDatePicker } from 'dummy_data/tests/unit/utils/finders'
 
 /****
  * Wrapper types

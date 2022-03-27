@@ -1,6 +1,6 @@
 import { ComponentPublicInstance } from 'vue'
 import { flushPromises, VueWrapper } from '@vue/test-utils'
-import wrapperFactory from 'tests/unit/utils/wrapperFactory'
+import wrapperFactory from 'dummy_data/tests/unit/utils/wrapperFactory'
 import MailToGedLine from '@/modules/DataManipulation/MailToGed/components/Elements/MailToGedLine.vue'
 
 type MailToGedLineProps = {

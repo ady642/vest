@@ -1,7 +1,7 @@
 import { ComponentPublicInstance } from 'vue'
 import { VueWrapper } from '@vue/test-utils'
 import constants from '@/Common/constants'
-import wrapperFactory from 'tests/unit/utils/wrapperFactory'
+import wrapperFactory from 'dummy_data/tests/unit/utils/wrapperFactory'
 import FolderInfoBox from '@/modules/DataManipulation/Upload/components/Notification/FolderInfoBox.vue'
 
 export type FolderInfoBoxTypeWrapper = VueWrapper<

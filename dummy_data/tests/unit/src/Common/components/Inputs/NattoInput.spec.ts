@@ -1,8 +1,8 @@
 import NattoInput from '@/Common/components/Inputs/NattoInput.vue'
-import wrapperFactory from 'tests/unit/utils/wrapperFactory'
+import wrapperFactory from 'dummy_data/tests/unit/utils/wrapperFactory'
 import { flushPromises, VueWrapper } from '@vue/test-utils'
 import { NattoInputProps, NattoInputWrapper } from './NattoInputType'
-import useStyleguideStubs from 'tests/unit/utils/useStyleguideStubs'
+import useStyleguideStubs from 'dummy_data/tests/unit/utils/useStyleguideStubs'
 
 const { MpInput } = useStyleguideStubs()
 

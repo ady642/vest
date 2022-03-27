@@ -1,9 +1,9 @@
 import NattoDropdownItem from '@/Common/components/Dropdown/NattoDropdownItem.vue'
 import NattoTooltip from '@/Common/components/Tooltips/NattoTooltip.vue'
-import wrapperFactory from 'tests/unit/utils/wrapperFactory'
+import wrapperFactory from 'dummy_data/tests/unit/utils/wrapperFactory'
 import { ComponentPublicInstance } from 'vue'
 import { VueWrapper } from '@vue/test-utils'
-import useElementStubs from 'tests/unit/utils/useElementStubs'
+import useElementStubs from 'dummy_data/tests/unit/utils/useElementStubs'
 
 const { ElDropdownItem, ElTooltip } = useElementStubs()
 

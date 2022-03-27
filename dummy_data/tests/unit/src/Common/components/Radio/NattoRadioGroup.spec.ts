@@ -1,9 +1,9 @@
 import NattoRadioGroup from '@/Common/components/Radio/NattoRadioGroup.vue'
-import wrapperFactory from 'tests/unit/utils/wrapperFactory'
+import wrapperFactory from 'dummy_data/tests/unit/utils/wrapperFactory'
 import { ComponentPublicInstance } from 'vue'
 import { VueWrapper } from '@vue/test-utils'
-import useStyleguideStubs from 'tests/unit/utils/useStyleguideStubs'
-import useElementsStubs from 'tests/unit/utils/useElementStubs'
+import useStyleguideStubs from 'dummy_data/tests/unit/utils/useStyleguideStubs'
+import useElementsStubs from 'dummy_data/tests/unit/utils/useElementStubs'
 
 /****
  * Wrapper types

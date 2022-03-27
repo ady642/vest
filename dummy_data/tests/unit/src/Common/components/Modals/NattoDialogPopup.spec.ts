@@ -1,7 +1,7 @@
 import NattoDialogPopup from '@/Common/components/Modals/NattoDialogPopup.vue'
-import wrapperFactory from 'tests/unit/utils/wrapperFactory'
+import wrapperFactory from 'dummy_data/tests/unit/utils/wrapperFactory'
 import { DOMWrapper, VueWrapper } from '@vue/test-utils'
-import useElement from 'tests/unit/utils/useElementStubs'
+import useElement from 'dummy_data/tests/unit/utils/useElementStubs'
 import { ComponentPublicInstance } from 'vue'
 
 const { ElDialog, ElButton } = useElement()

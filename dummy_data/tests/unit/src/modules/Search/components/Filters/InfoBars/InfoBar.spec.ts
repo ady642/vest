@@ -1,5 +1,5 @@
 import InfoBar from '@/modules/Search/components/Filters/InfoBars/InfoBar.vue'
-import wrapperFactory from 'tests/unit/utils/wrapperFactory'
+import wrapperFactory from 'dummy_data/tests/unit/utils/wrapperFactory'
 import { DOMWrapper, VueWrapper } from '@vue/test-utils'
 import { ComponentPublicInstance } from '@vue/runtime-core'
 import { computed, ComputedRef } from 'vue'

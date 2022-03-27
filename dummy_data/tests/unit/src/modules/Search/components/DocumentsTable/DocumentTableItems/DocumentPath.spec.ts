@@ -1,5 +1,5 @@
 import DocumentPathItem from '@/modules/Search/components/DocumentsTable/DocumentsTableItems/DocumentPathItem.vue'
-import wrapperFactory from 'tests/unit/utils/wrapperFactory'
+import wrapperFactory from 'dummy_data/tests/unit/utils/wrapperFactory'
 import FilePathText from '@/Common/components/Text/FilePathText.vue'
 
 const createWrapper = ({ path = [] }: { path: string[] } = { path: [] }) =>

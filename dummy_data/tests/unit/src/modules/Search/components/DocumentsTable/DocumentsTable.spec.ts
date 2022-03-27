@@ -1,22 +1,22 @@
 import { VueWrapper } from '@vue/test-utils'
 import DocumentsTable from '@/modules/Search/components/DocumentsTable/DocumentsTable.vue'
-import wrapperFactory from 'tests/unit/utils/wrapperFactory'
+import wrapperFactory from 'dummy_data/tests/unit/utils/wrapperFactory'
 import NattoTable from '@/Common/components/Table/NattoTable.vue'
 import Documents from '@/modules/Search/models/Documents/Inputs/Documents'
-import { documentAPIMock } from 'tests/unit/src/modules/Search/mocks/DocumentAPIMock'
+import { documentAPIMock } from 'dummy_data/tests/unit/src/modules/Search/mocks/DocumentAPIMock'
 import { ComponentPublicInstance } from '@vue/runtime-core'
-import { NattoTableWrapper } from 'tests/unit/src/Common/components/Table/NattoTable.spec'
+import { NattoTableWrapper } from 'dummy_data/tests/unit/src/Common/components/Table/NattoTable.spec'
 import constants from '@/Common/constants'
 import DeleteFileModalConfirmation from '@/modules/DataManipulation/Delete/DeleteFile/components/Modals/DeleteFileModalConfirmation.vue'
 import DocumentSyncStatusElement from '@/modules/Search/components/DocumentsTable/DocumentsTableElements/DocumentSyncStatusElement.vue'
 import DocumentNameElement from '@/modules/Search/components/DocumentsTable/DocumentsTableElements/DocumentNameElement.vue'
 import Properties from '@/modules/Search/models/Documents/Inputs/Properties'
-import useStyleguideStubs from 'tests/unit/utils/useStyleguideStubs'
+import useStyleguideStubs from 'dummy_data/tests/unit/utils/useStyleguideStubs'
 import Document, {
   LifeCycleStatus
 } from '@/modules/Search/models/Documents/Inputs/Document'
 import { router } from '@kpmg/mypulse-shared-dependencies'
-import { findDocumentActionsElement } from 'tests/unit/utils/finders'
+import { findDocumentActionsElement } from 'dummy_data/tests/unit/utils/finders'
 
 const { MpTable } = useStyleguideStubs()
 

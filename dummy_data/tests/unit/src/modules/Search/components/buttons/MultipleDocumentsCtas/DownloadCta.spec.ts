@@ -1,13 +1,13 @@
 import DownloadCta from '@/modules/Search/components/Buttons/MultipleDocumentsCtas/DownloadCta.vue'
 import MultipleDocumentsCta from '@/modules/Search/components/Buttons/MultipleDocumentsCtas/MultipleDocumentsCta.vue'
-import wrapperFactory from 'tests/unit/utils/wrapperFactory'
+import wrapperFactory from 'dummy_data/tests/unit/utils/wrapperFactory'
 import { ComponentPublicInstance } from 'vue'
 import { VueWrapper } from '@vue/test-utils'
 import {
   findDownloadIcon,
   findLoadingIcon,
   findMultipleDocumentsCta
-} from 'tests/unit/utils/finders'
+} from 'dummy_data/tests/unit/utils/finders'
 import { createSearchStoreMocked } from 'tests/unit/__mocks__/storeMock'
 
 /****

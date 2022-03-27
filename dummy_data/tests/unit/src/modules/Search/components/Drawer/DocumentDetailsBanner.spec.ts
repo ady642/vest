@@ -1,5 +1,5 @@
 import DocumentDetailsBanner from '@/modules/Search/components/Drawer/DocumentDetailsBanner.vue'
-import wrapperFactory from 'tests/unit/utils/wrapperFactory'
+import wrapperFactory from 'dummy_data/tests/unit/utils/wrapperFactory'
 import { ComponentPublicInstance, DirectiveBinding } from 'vue'
 import { DOMWrapper, VueWrapper } from '@vue/test-utils'
 import Document from '@/modules/Search/models/Documents/Inputs/Document'

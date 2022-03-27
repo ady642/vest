@@ -1,5 +1,5 @@
 import NattoUploadBtn from '@/Common/components/Upload/Buttons/NattoUploadBtn.vue'
-import wrapperFactory from 'tests/unit/utils/wrapperFactory'
+import wrapperFactory from 'dummy_data/tests/unit/utils/wrapperFactory'
 import { VueWrapper } from '@vue/test-utils'
 const ElUpload = {
   template: '<div><slot></slot></div>',

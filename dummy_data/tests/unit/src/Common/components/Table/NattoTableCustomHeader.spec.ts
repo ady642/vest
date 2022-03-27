@@ -1,6 +1,6 @@
 import { ComponentPublicInstance } from 'vue'
 import { VueWrapper } from '@vue/test-utils'
-import wrapperFactory from 'tests/unit/utils/wrapperFactory'
+import wrapperFactory from 'dummy_data/tests/unit/utils/wrapperFactory'
 import DocumentNameHeader from '@/modules/Search/components/DocumentsTable/DocumentsTableHeaders/DocumentNameHeader.vue'
 import DocumentCreationDateHeader from '@/modules/Search/components/DocumentsTable/DocumentsTableHeaders/DocumentCreationDateHeader.vue'
 import DocumentActionHeader from '@/modules/Search/components/DocumentsTable/DocumentsTableHeaders/DocumentActionHeader.vue'
@@ -8,7 +8,7 @@ import DocumentTypeHeader from '@/modules/Search/components/DocumentsTable/Docum
 import ArrowDownIcon from '@/Common/components/Icons/ArrowDownIcon.vue'
 import DocumentsSortOptions from '@/modules/Search/models/Documents/Query/DocumentsSortOptions'
 import NattoTableCustomHeader from '@/Common/components/Table/NattoTableCustomHeader.vue'
-import { findNattoCheckbox } from 'tests/unit/utils/finders'
+import { findNattoCheckbox } from 'dummy_data/tests/unit/utils/finders'
 
 type NattoTableCustomHeaderProps = {
   sortOptions: DocumentsSortOptions

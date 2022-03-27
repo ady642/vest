@@ -1,10 +1,10 @@
 import DocumentsSearchInput from '@/modules/Search/components/Filters/DocumentsSearchInput.vue'
-import wrapperFactory from 'tests/unit/utils/wrapperFactory'
+import wrapperFactory from 'dummy_data/tests/unit/utils/wrapperFactory'
 import { ComponentPublicInstance } from 'vue'
 import { VueWrapper } from '@vue/test-utils'
 import NattoInput from '@/Common/components/Inputs/NattoInput.vue'
-import { NattoInputWrapper } from 'tests/unit/src/Common/components/Inputs/NattoInputType'
-import useStyleguide from 'tests/unit/utils/useStyleguideStubs'
+import { NattoInputWrapper } from 'dummy_data/tests/unit/src/Common/components/Inputs/NattoInputType'
+import useStyleguide from 'dummy_data/tests/unit/utils/useStyleguideStubs'
 
 /****
  * Wrapper types

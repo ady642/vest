@@ -1,8 +1,8 @@
 import StartDatePicker from '@/modules/Search/components/Filters/AdvancedSearchOptions/StartDatePicker.vue'
-import wrapperFactory from 'tests/unit/utils/wrapperFactory'
+import wrapperFactory from 'dummy_data/tests/unit/utils/wrapperFactory'
 import { ComponentPublicInstance } from 'vue'
 import { VueWrapper } from '@vue/test-utils'
-import { findSearchDatePicker } from 'tests/unit/utils/finders'
+import { findSearchDatePicker } from 'dummy_data/tests/unit/utils/finders'
 
 /****
  * Wrapper types

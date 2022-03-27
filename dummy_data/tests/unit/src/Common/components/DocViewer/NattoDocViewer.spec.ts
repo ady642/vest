@@ -1,5 +1,5 @@
 import NattoDocViewer from '@/Common/components/DocViewer/NattoDocViewer.vue'
-import wrapperFactory from 'tests/unit/utils/wrapperFactory'
+import wrapperFactory from 'dummy_data/tests/unit/utils/wrapperFactory'
 import { ComponentPublicInstance } from 'vue'
 import { DOMWrapper, VueWrapper } from '@vue/test-utils'
 

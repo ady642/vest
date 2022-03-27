@@ -2,7 +2,7 @@ import MainUploadPopup from '@/modules/DataManipulation/Upload/components/Notifi
 import InProgressUploadPopup from '@/modules/DataManipulation/Upload/components/Notification/InProgressUploadPopup.vue'
 import FailedUploadPopup from '@/modules/DataManipulation/Upload/components/Notification/FailedUploadPopup.vue'
 import SuccessUploadPopup from '@/modules/DataManipulation/Upload/components/Notification/SuccessUploadPopup.vue'
-import wrapperFactory from 'tests/unit/utils/wrapperFactory'
+import wrapperFactory from 'dummy_data/tests/unit/utils/wrapperFactory'
 import FileUpload from '@/modules/DataManipulation/Upload/models/Files/Inputs/FileUpload'
 import {
   filesFailedCase,

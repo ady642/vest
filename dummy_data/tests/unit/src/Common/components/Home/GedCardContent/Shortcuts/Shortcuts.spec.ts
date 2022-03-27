@@ -1,10 +1,10 @@
 import Shortcuts from '@/Common/components/Home/Card/GedCardContent/Shortcuts/Shortcuts.vue'
-import wrapperFactory from 'tests/unit/utils/wrapperFactory'
+import wrapperFactory from 'dummy_data/tests/unit/utils/wrapperFactory'
 import { ComponentPublicInstance } from 'vue'
 import { VueWrapper } from '@vue/test-utils'
 import Folders from '@/modules/Search/models/Folders/Inputs/Folders'
 import Shortcut from '@/Common/components/Home/Card/GedCardContent/Shortcuts/Shortcut.vue'
-import useFoldersData from 'tests/unit/src/modules/Search/mocks/FoldersDataMock'
+import useFoldersData from 'dummy_data/tests/unit/src/modules/Search/mocks/FoldersDataMock'
 import { router } from '@kpmg/mypulse-shared-dependencies'
 
 /****

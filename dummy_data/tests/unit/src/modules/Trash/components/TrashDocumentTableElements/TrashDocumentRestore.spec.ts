@@ -1,13 +1,13 @@
-import wrapperFactory from 'tests/unit/utils/wrapperFactory'
+import wrapperFactory from 'dummy_data/tests/unit/utils/wrapperFactory'
 import { VueWrapper } from '@vue/test-utils'
-import { createTrashStoreMock } from 'tests/unit/__mocks__/storeMock/createTrashStoreMock'
+import { createTrashStoreMock } from 'dummy_data/tests/unit/__mocks__/storeMock/createTrashStoreMock'
 
 import TrashDocumentRestore from '@/modules/Trash/components/TrashDocumentsTableElements/TrashDocumentRestore.vue'
 import DocumentsTableElement from '@/modules/Search/components/DocumentsTable/DocumentsTableElements/DocumentsTableElement.vue'
 import RestoreIcon from '@/Common/components/Icons/RestoreIcon.vue'
 import NattoTableItem from '@/Common/components/Table/NattoTableItem.vue'
 import { ComponentPublicInstance } from 'vue'
-import useElement from 'tests/unit/utils/useElementStubs'
+import useElement from 'dummy_data/tests/unit/utils/useElementStubs'
 
 const { ElTableColumn } = useElement()
 const storeMock = createTrashStoreMock()

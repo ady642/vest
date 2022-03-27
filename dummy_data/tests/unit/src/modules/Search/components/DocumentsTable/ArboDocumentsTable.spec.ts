@@ -1,9 +1,9 @@
 import { ComponentPublicInstance, WritableComputedRef } from 'vue'
 import { flushPromises, VueWrapper } from '@vue/test-utils'
-import wrapperFactory from 'tests/unit/utils/wrapperFactory'
-import { documentAPIMock } from 'tests/unit/src/modules/Search/mocks/DocumentAPIMock'
-import { NattoTableWrapper } from 'tests/unit/src/Common/components/Table/NattoTable.spec'
-import { DocumentsFoldersBrowserTypeWrapper } from 'tests/unit/src/modules/Search/components/Navigation/DocumentsFoldersBrowser.spec'
+import wrapperFactory from 'dummy_data/tests/unit/utils/wrapperFactory'
+import { documentAPIMock } from 'dummy_data/tests/unit/src/modules/Search/mocks/DocumentAPIMock'
+import { NattoTableWrapper } from 'dummy_data/tests/unit/src/Common/components/Table/NattoTable.spec'
+import { DocumentsFoldersBrowserTypeWrapper } from 'dummy_data/tests/unit/src/modules/Search/components/Navigation/DocumentsFoldersBrowser.spec'
 import ArboDocumentsTable from '@/modules/Search/components/DocumentsTable/ArboDocumentsTable.vue'
 import Folders from '@/modules/Search/models/Folders/Inputs/Folders'
 import Documents from '@/modules/Search/models/Documents/Inputs/Documents'
@@ -18,11 +18,11 @@ import DocumentSyncStatusElement from '@/modules/Search/components/DocumentsTabl
 import DocumentsSortOptions from '@/modules/Search/models/Documents/Query/DocumentsSortOptions'
 import NattoDropZone from '@/Common/components/Upload/NattoDropZone.vue'
 import { createSearchStoreMocked } from 'tests/unit/__mocks__/storeMock'
-import useStyleguideStubs from 'tests/unit/utils/useStyleguideStubs'
+import useStyleguideStubs from 'dummy_data/tests/unit/utils/useStyleguideStubs'
 import {
   findDeleteFileModalConfirmation,
   findMultipleDocumentsCtas
-} from 'tests/unit/utils/finders'
+} from 'dummy_data/tests/unit/utils/finders'
 import { searchModule } from '@/modules/Search/store'
 import { DocumentFromAPI } from '@/Common/types/document'
 import { LifeCycleStatus } from '@/modules/Search/models/Documents/Inputs/Document'

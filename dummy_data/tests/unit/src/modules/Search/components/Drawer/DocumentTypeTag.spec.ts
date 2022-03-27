@@ -1,9 +1,9 @@
 import DocumentTypeTag from '@/modules/Search/components/Drawer/DocumentTypeTag/DocumentTypeTag.vue'
-import wrapperFactory from 'tests/unit/utils/wrapperFactory'
+import wrapperFactory from 'dummy_data/tests/unit/utils/wrapperFactory'
 import { ComponentPublicInstance } from 'vue'
 import { VueWrapper } from '@vue/test-utils'
-import { findMpIcon } from 'tests/unit/utils/finders'
-import useStyleguideStubs from 'tests/unit/utils/useStyleguideStubs'
+import { findMpIcon } from 'dummy_data/tests/unit/utils/finders'
+import useStyleguideStubs from 'dummy_data/tests/unit/utils/useStyleguideStubs'
 
 /****
  * Wrapper types

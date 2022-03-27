@@ -1,10 +1,10 @@
 import UploadFileList from '@/modules/DataManipulation/Upload/components/DocumentsUploadModal/Content/UploadFileList.vue'
 import UploadFileListItem from '@/modules/DataManipulation/Upload/components/DocumentsUploadModal/Content/UploadFileListItem.vue'
 import FileUpload from '@/modules/DataManipulation/Upload/models/Files/Inputs/FileUpload'
-import wrapperFactory from 'tests/unit/utils/wrapperFactory'
+import wrapperFactory from 'dummy_data/tests/unit/utils/wrapperFactory'
 import { VueWrapper } from '@vue/test-utils'
 import { StateUpload } from '@/modules/DataManipulation/Upload/models/Files/Inputs/FileUpload'
-import useElement from 'tests/unit/utils/useElementStubs'
+import useElement from 'dummy_data/tests/unit/utils/useElementStubs'
 
 const { ElScrollbar } = useElement()
 

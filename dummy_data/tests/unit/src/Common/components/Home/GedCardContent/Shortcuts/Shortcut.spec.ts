@@ -1,9 +1,9 @@
 import Shortcut from '@/Common/components/Home/Card/GedCardContent/Shortcuts/Shortcut.vue'
-import wrapperFactory from 'tests/unit/utils/wrapperFactory'
+import wrapperFactory from 'dummy_data/tests/unit/utils/wrapperFactory'
 import { ComponentPublicInstance } from 'vue'
 import { VueWrapper } from '@vue/test-utils'
 import NattoShortcutCard from '@/Common/components/Cards/NattoShortcutCard.vue'
-import { NattoShortcutCardWrapper } from 'tests/unit/src/Common/components/Cards/NattoShortcutCard.spec'
+import { NattoShortcutCardWrapper } from 'dummy_data/tests/unit/src/Common/components/Cards/NattoShortcutCard.spec'
 
 /****
  * Wrapper types

@@ -1,10 +1,10 @@
 import NattoBadge from '@/Common/components/Badges/NattoBadge.vue'
 import OpenFilterButton from '@/modules/Search/components/Filters/Buttons/OpenFilterButton.vue'
-import wrapperFactory from 'tests/unit/utils/wrapperFactory'
+import wrapperFactory from 'dummy_data/tests/unit/utils/wrapperFactory'
 import { VueWrapper } from '@vue/test-utils'
 import { ComponentPublicInstance } from 'vue'
-import useElementStubs from 'tests/unit/utils/useElementStubs'
-import useStyleguideStubs from 'tests/unit/utils/useStyleguideStubs'
+import useElementStubs from 'dummy_data/tests/unit/utils/useElementStubs'
+import useStyleguideStubs from 'dummy_data/tests/unit/utils/useStyleguideStubs'
 
 const { ElBadge, ElButton } = useElementStubs()
 const { MpAdvancedSearchBtn } = useStyleguideStubs()

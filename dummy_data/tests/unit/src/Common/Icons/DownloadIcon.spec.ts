@@ -1,9 +1,9 @@
 import DownloadIcon from '@/Common/components/Icons/DownloadIcon.vue'
-import wrapperFactory from 'tests/unit/utils/wrapperFactory'
+import wrapperFactory from 'dummy_data/tests/unit/utils/wrapperFactory'
 import { VueWrapper } from '@vue/test-utils'
 import { ComponentPublicInstance } from '@vue/runtime-core'
-import { findMpIcon } from 'tests/unit/utils/finders'
-import useStyleguideStubs from 'tests/unit/utils/useStyleguideStubs'
+import { findMpIcon } from 'dummy_data/tests/unit/utils/finders'
+import useStyleguideStubs from 'dummy_data/tests/unit/utils/useStyleguideStubs'
 
 export type DownloadIconWrapper = VueWrapper<
   ComponentPublicInstance<Record<string, unknown>, { DownloadSvg: File }>

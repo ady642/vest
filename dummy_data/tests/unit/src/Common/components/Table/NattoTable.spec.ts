@@ -1,13 +1,13 @@
 import { ComponentPublicInstance, Ref } from 'vue'
 import { DOMWrapper, VueWrapper } from '@vue/test-utils'
-import wrapperFactory from 'tests/unit/utils/wrapperFactory'
+import wrapperFactory from 'dummy_data/tests/unit/utils/wrapperFactory'
 import NattoTable from '@/Common/components/Table/NattoTable.vue'
 import { NattoPaginationWrapper } from '../Paging/NattoPagination.spec'
 import NattoPagination from '@/Common/components/Paging/NattoPagination.vue'
 import NattoTableCustomHeader from '@/Common/components/Table/NattoTableCustomHeader.vue'
 import DocumentsSortOptions from '@/modules/Search/models/Documents/Query/DocumentsSortOptions'
-import useStyleguideStubs from 'tests/unit/utils/useStyleguideStubs'
-import { findMpTableWrapper } from 'tests/unit/utils/finders'
+import useStyleguideStubs from 'dummy_data/tests/unit/utils/useStyleguideStubs'
+import { findMpTableWrapper } from 'dummy_data/tests/unit/utils/finders'
 
 type NattoTableProps = {
   tableData: { value: string; label: string }[]

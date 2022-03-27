@@ -1,69 +1,58 @@
-import NattoTag from '@/Common/components/Tags/NattoTag.vue'
-import wrapperFactory from 'tests/unit/utils/wrapperFactory'
-import { ComponentPublicInstance } from 'vue'
-import { VueWrapper } from '@vue/test-utils'
-import useElement from 'tests/unit/utils/useElementStubs'
 
-/****
- * Wrapper types
- */
-type NattoTagProps = {
-  closable?: boolean
-}
+            import NattoTag from '/home/adri/Desktop/Projects/unittestgen/dummy_data/src/Common/components/Tags/NattoTag.vue'
+            import wrapperFactory from 'tests/unit/utils/wrapperFactory'
+            import useElement from 'tests/unit/utils/useElementStubs'
+            import { VueWrapper } from '@vue/test-utils'
+        
+            type NattoTagProps = {
+              closable: boolean
+            }
+            
+            const defaultProps: NattoTagProps = {
+              closable: true
+            }  
+        
+            const createWrapper = ({
+                props = defaultProps,
+              slots = defaultSlots
+            } = {}) =>
+              wrapperFactory(NattoTag , {
+                props
+                slots
+              })
+              
+            let wrapper = createWrapper()
+        
+                let findElTag = (wrapper) => wrapper.findComponent(ElTag)
+        
+                
+                    let ElTagWrapper = findElTag(wrapper)
+                
 
-type NattoTagSetup = unknown
+                describe(NattoTag, () => {
+                     beforeEach(() => {
+                        wrapper = createWrapper()
+                        ElTagWrapper = findElTag(wrapper)
 
-export type NattoTagWrapper = VueWrapper<
-  ComponentPublicInstance<NattoTagProps, NattoTagSetup>
->
-/****
- * Wrapper finders
- */
+                     })
 
-const { ElTag } = useElement()
-
-const findElTag = (wrapper: NattoTagWrapper) =>
-  wrapper.findComponent({ name: 'el-tag' })
-
-/****
- * Wrapper creation
- */
-const defaultProps: NattoTagProps = {
-  closable: false
-}
-
-const createWrapper = ({
-  props = defaultProps,
-  defaultSlot = '<div/>'
-} = {}): NattoTagWrapper =>
-  wrapperFactory(NattoTag, {
-    props,
-    global: {
-      stubs: { ElTag }
-    },
-    slots: {
-      default: defaultSlot
-    }
-  })
-
-let wrapper = createWrapper()
-let elTagWrapper = findElTag(wrapper)
-
-describe('NattoTag', () => {
-  beforeEach(() => {
-    wrapper = createWrapper()
-    elTagWrapper = findElTag(wrapper)
-  })
-
-  describe('bindings with ElTag', () => {
-    test('props bindings', () => {
-      expect(elTagWrapper.attributes('closable')).toBe('false')
-    })
-    test('slot default rendering', () => {
-      wrapper = createWrapper({ defaultSlot: '<div>Columbo</div>' })
-
-      elTagWrapper = findElTag(wrapper)
-      expect(elTagWrapper.text()).toBe('Columbo')
-    })
-  })
-})
+                      describe('binding with ElTag', () => {
+                        test('static props', () => {
+                          expect(ElTagWrapper.attributes('class')).toBe(true)
+,expect(ElTagWrapper.attributes('closable')).toBe(true)
+ })
+                      })
+                      
+                      describe('rendering', () => {
+            it('should render the undefined slot', () => {
+               expect(wrapper.html()).toContain('I fill the undefined slot')
+             })
+        })       
+                      
+                    
+                        
+                    
+                })
+                
+                
+        

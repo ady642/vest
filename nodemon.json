@@ -1,5 +1,0 @@
-{
-  "watch": ["."],
-  "ext": "ts,json",
-  "exec": "tsc ./index.ts && ts-node index.ts"
-}

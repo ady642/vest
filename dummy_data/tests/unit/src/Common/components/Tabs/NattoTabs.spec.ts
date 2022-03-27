@@ -1,73 +1,59 @@
-import NattoTabs from '@/Common/components/Tabs/NattoTabs.vue'
-import wrapperFactory from 'tests/unit/utils/wrapperFactory'
-import { VueWrapper } from '@vue/test-utils'
-import { ComponentPublicInstance } from 'vue'
-import { TabItem } from '@/Common/types/common'
-import useStyleguideStubs from 'tests/unit/utils/useStyleguideStubs'
 
-const { MpTabs } = useStyleguideStubs()
+            import NattoTabs from '/home/adri/Desktop/Projects/unittestgen/dummy_data/src/Common/components/Tabs/NattoTabs.vue'
+            import wrapperFactory from 'tests/unit/utils/wrapperFactory'
+            import useElement from 'tests/unit/utils/useElementStubs'
+            import { VueWrapper } from '@vue/test-utils'
+        
+            type NattoTabsProps = {
+              items: array,stretch: boolean
+            }
+            
+            const defaultProps: NattoTabsProps = {
+              items: undefined,stretch: true
+            }  
+        
+            const createWrapper = ({
+                props = defaultProps,
+              
+            } = {}) =>
+              wrapperFactory(NattoTabs , {
+                props
+                
+              })
+              
+            let wrapper = createWrapper()
+        
+                let findMpTabs = (wrapper) => wrapper.findComponent(MpTabs)
+        
+                
+                    let MpTabsWrapper = findMpTabs(wrapper)
+                
 
-export type NattoTabsTypeWrapper = VueWrapper<
-  ComponentPublicInstance<
-    { items: TabItem[] },
-    {
-      activeName: string
-      handleClick: (tab: { props: { name: string } }) => void
-    }
-  >
->
+                describe(NattoTabs, () => {
+                     beforeEach(() => {
+                        wrapper = createWrapper()
+                        MpTabsWrapper = findMpTabs(wrapper)
 
-const createWrapper = (items: TabItem[]): NattoTabsTypeWrapper =>
-  wrapperFactory(NattoTabs, {
-    props: {
-      items
-    },
-    global: {
-      stubs: {
-        MpTabs
-      }
-    }
-  })
+                     })
 
-const items: TabItem[] = [
-  {
-    id: 'Comptabilité',
-    name: 'Comptabilité',
-    label: 'Comptabilité'
-  },
-  {
-    id: 'Gestion Sociale',
-    name: 'Gestion Sociale',
-    label: 'Gestion Sociale'
-  }
-]
-
-const selected = {
-  props: {
-    name: '1234'
-  }
-}
-
-let wrapper = createWrapper(items)
-let mpTabsWrapper: VueWrapper<ComponentPublicInstance> =
-  wrapper.findComponent(MpTabs)
-
-describe('natto-tabs', () => {
-  beforeEach(() => {
-    wrapper = createWrapper(items)
-    mpTabsWrapper = wrapper.findComponent(MpTabs)
-  })
-  describe('bindings with MpTabs', () => {
-    it('props bindings', () => {
-      expect(mpTabsWrapper.props('tabItems')).toStrictEqual(items)
-    })
-
-    describe('events', () => {
-      it('Should emit tab-selected event on ElTabs click', async () => {
-        await mpTabsWrapper.vm.$emit('tab-click', selected)
-        expect(wrapper.emitted()['tab-selected'].length).toBe(1)
-        expect(wrapper.emitted()['tab-selected'][0]).toContain('1234')
-      })
-    })
-  })
-})
+                      describe('binding with MpTabs', () => {
+                        test('static props', () => {
+                          expect(MpTabsWrapper.attributes('tab-items')).toBe(true)
+,expect(MpTabsWrapper.attributes('stretch')).toBe(true)
+ })
+                      })
+                      
+                             
+                      
+                    
+                        describe('events', () => {
+            it('should emit tab-click when MpTabs emits tab-click', () => {
+                await MpTabsWrapper.vm.$emit(tab-click)
+                expect(wrapper.emitted('my-event')).toHaveLength(1)
+             })
+        })
+                    
+                })
+                
+                
+        

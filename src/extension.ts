@@ -2,6 +2,7 @@ import * as vscode from 'vscode';
 import UnitTestFactory from "./templates/UnitTestFactory";
 import * as fs from 'fs';
 import { getFileName, getPath } from './utils';
+import {lint} from "./lint";
 
 export function activate(context: vscode.ExtensionContext) {
 	// The command has been defined in the package.json file
@@ -11,14 +12,14 @@ export function activate(context: vscode.ExtensionContext) {
 		// The code you place here will be executed every time your command is executed
 		// Display a message box to the user
 		const path = vscode?.window?.activeTextEditor?.document.fileName ?? '';
-		
+
 		const data = fs.readFileSync(path, 'utf8');
-	
+
 		const unitTestFactory = new UnitTestFactory(path, data);
 		const testPath = path.replace('src', 'tests/unit/src').replace('.vue', '.spec.ts');
 
 		const pathWithoutFileName = getPath(testPath);
-		
+
 		if (!fs.existsSync(pathWithoutFileName)){
 			fs.mkdirSync(pathWithoutFileName, { recursive: true });
 		}
@@ -33,6 +34,7 @@ export function activate(context: vscode.ExtensionContext) {
 					});
 				});
 		  });
+
 	});
 
 	context.subscriptions.push(disposable);

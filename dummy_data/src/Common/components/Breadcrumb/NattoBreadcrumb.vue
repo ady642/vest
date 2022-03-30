@@ -1,6 +1,6 @@
 <template>
   <div class="breadcrumb-container">
-    <MpBreadcrumb
+    <mp-breadcrumb
       :breadcrumb-items="breadcrumbs"
       :ellipsed="ellipsed"
       @breadcrumb-click="breadcrumbClicked"

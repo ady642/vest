@@ -1,64 +1,63 @@
-import NattoBreadcrumb from '@/Common/components/Breadcrumb/NattoBreadcrumb.vue'
-import wrapperFactory from 'dummy_data/tests/unit/utils/wrapperFactory'
-import { VueWrapper } from '@vue/test-utils'
-import useStyleguideStubs from 'dummy_data/tests/unit/utils/useStyleguideStubs'
 
-const { MpBreadcrumb } = useStyleguideStubs()
+            import NattoBreadcrumb from './dummy_data/src/Common/components/Breadcrumb/NattoBreadcrumb.vue'
+            import wrapperFactory from 'tests/unit/utils/wrapperFactory'
+            import useElement from 'tests/unit/utils/useElementStubs'
+            import { VueWrapper } from '@vue/test-utils'
+        
+            type NattoBreadcrumbProps = {
+              breadcrumbs: array,disabledBreadcrumbs: boolean,ellipsed: boolean
+            }
+            
+            const defaultProps: NattoBreadcrumbProps = {
+              breadcrumbs: undefined,disabledBreadcrumbs: true,ellipsed: true
+            }  
+        
+            const createWrapper = ({
+                props = defaultProps,
+              
+            } = {}) =>
+              wrapperFactory(NattoBreadcrumb , {
+                props
+                
+              })
+              
+            let wrapper = createWrapper()
+        
+                let findMpBreadcrumb = (wrapper) => wrapper.findComponent(MpBreadcrumb)
+        
+                
+                    let MpBreadcrumbWrapper = findMpBreadcrumb(wrapper)
+                
 
-type NattoLightBreadcrumbProps = {
-  breadcrumbs: { id: number; text: string }[]
-  disabledBreadcrumbs?: boolean
-  ellipsed?: boolean
-}
+                describe(NattoBreadcrumb, () => {
+                     beforeEach(() => {
+                        wrapper = createWrapper()
+                        MpBreadcrumbWrapper = findMpBreadcrumb(wrapper)
 
-const defaultProps: NattoLightBreadcrumbProps = {
-  breadcrumbs: [
-    { id: 1, text: 'Compta' },
-    { id: 2, text: 'Achats' },
-    { id: 3, text: 'Janvier' }
-  ],
-  disabledBreadcrumbs: false,
-  ellipsed: false
-}
+                     })
 
-const createWrapper = (props = defaultProps) =>
-  wrapperFactory(NattoBreadcrumb, {
-    global: {
-      stubs: {
-        MpBreadcrumb
-      }
-    },
-    props
-  })
-
-const findMpBreadcrumbWrapper = (wrapper: VueWrapper<any>) =>
-  wrapper.findComponent(MpBreadcrumb)
-
-describe('NattoBreadcrumb', () => {
-  describe('bindings with MpBreadcrumb', () => {
-    describe('props', () => {
-      const wrapper = createWrapper()
-      const mpBreadcrumbWrapper = findMpBreadcrumbWrapper(wrapper)
-
-      expect(mpBreadcrumbWrapper.props('breadcrumbItems')).toStrictEqual([
-        { id: 1, text: 'Compta' },
-        { id: 2, text: 'Achats' },
-        { id: 3, text: 'Janvier' }
-      ])
-      expect(mpBreadcrumbWrapper.props('ellipsed')).toStrictEqual(false)
-    })
-    describe('events', () => {
-      it('Should not fire event breadcrumb-click when disabled', async () => {
-        const wrapper = createWrapper({
-          ...defaultProps,
-          disabledBreadcrumbs: true
+                     
+        
+                describe('binding with MpBreadcrumb', () => {
+            test('static props', () => {
+              expect(MpBreadcrumbWrapper.attributes('breadcrumb-items')).toBe(true)
+,expect(MpBreadcrumbWrapper.attributes('ellipsed')).toBe(true)
+ })
+          })
+        
+        
+                     
+                             
+                      
+                    
+                        describe('events', () => {
+            it('should emit breadcrumb-click when MpBreadcrumb emits breadcrumb-click', () => {
+                await MpBreadcrumbWrapper.vm.$emit(breadcrumb-click)
+                expect(wrapper.emitted('my-event')).toHaveLength(1)
+             })
         })
-        const mpBreadcrumbWrapper = findMpBreadcrumbWrapper(wrapper)
-
-        await mpBreadcrumbWrapper.vm.$emit('breadcrumb-click')
-
-        expect(wrapper.emitted()['breadcrumb-click']).toStrictEqual(undefined)
-      })
-    })
-  })
-})
+                    
+                })
+                
+                
+        

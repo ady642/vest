@@ -22,6 +22,7 @@
     ]
   },
   "scripts": {
+    "dev": "nodemon",
     "vscode:prepublish": "npm run compile",
     "compile": "vscode_extension/node_modules/.bin/tsc -p ./",
     "watch": "vscode_extension/node_modules/.bin/tsc -watch -p ./",
@@ -30,6 +31,7 @@
     "test": "node out/test/runTest.js"
   },
   "devDependencies": {
+    "@types/eslint": "^8.4.1",
     "@types/glob": "^7.2.0",
     "@types/jest": "^27.4.1",
     "@types/mkdirp": "^1.0.2",
@@ -43,7 +45,9 @@
     "glob": "^7.2.0",
     "jest": "^27.5.1",
     "mocha": "^9.2.1",
+    "nodemon": "^2.0.15",
     "ts-jest": "^27.1.4",
+    "ts-node": "^10.7.0",
     "ts-node-dev": "^1.1.8",
     "typescript": "^4.5.5"
   },

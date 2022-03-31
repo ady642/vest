@@ -4,7 +4,7 @@
   "displayName": "unittestgen",
   "repository": "https://gitlab.com/ady642/unittestgen",
   "description": "utility to generate test suites for a vue component",
-  "version": "0.0.1",
+  "version": "1.0.1",
   "engines": {
     "vscode": "^1.65.0"
   },

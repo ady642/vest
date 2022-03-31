@@ -1,8 +1,10 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const utils_1 = require("../utils");
-const PropsBuilder_1 = require("./PropsBuilder");
-const htmlTags = 'template|slot|script|style|div|section|a|button|p|select|textarea|main|head|h1|h2|h3|header|i|iframe|img|span';
+const PropsFactory_1 = require("./PropsFactory");
+const ChildrenFactory_1 = require("./ChildrenFactory");
+const EventFactory_1 = require("./EventFactory/EventFactory");
+const SlotsFactory_1 = require("./SlotsFactory/SlotsFactory");
 // TODO: GET REAL TYPE OF EVENT HANDLER
 // TODO: GET REAL NAME EVENT EMITTED IF IS EMIT TYPE
 // TODO: CREATE TEMPLATE IF IS DISPATCH
@@ -10,43 +12,13 @@ const htmlTags = 'template|slot|script|style|div|section|a|button|p|select|texta
 // TODO: IF COMPONENT TAG IS PascalCase it causes an error
 class UnitTestFactory {
     constructor(path, vueCode) {
-        const regexComponentInKebabCase = new RegExp(`<(?!\\/|${htmlTags})([^|[^>])*>`, 'g');
-        this.componentsTags = vueCode.match(regexComponentInKebabCase) ?? [];
-        this.children = this.getChildren();
-        this.vueCode = vueCode;
         this.path = path;
         this.name = (0, utils_1.getFileName)(path);
-        this.slots = this.getSlots();
-        this.events = this.getEvents();
-        this.propsBuilder = new PropsBuilder_1.default(vueCode);
-        const imports = this.buildImports();
-        const createWrapper = this.buildCreateWrapper(); // Find props
-        const findWrappers = this.buildFindWrappers();
-        const testsSuite = this.buildTestSuites(this.getChildren()); // Find children
-        this.test = imports + createWrapper + findWrappers + testsSuite;
-    }
-    getEvents() {
-        return [
-            { name: 'click', output: { type: 'event' } }
-        ];
-    }
-    getSlots() {
-        const slots = this.vueCode.match(/<slot \/>/gm);
-        const matchSlots = (slot) => slot.match(/"([a-z]*)"/) ?? [];
-        return slots?.map((slot) => matchSlots(slot) ? matchSlots(slot)[0] : 'default') ?? [];
-    }
-    getChildren() {
-        return this.componentsTags.map((componentTag) => {
-            const componentTagMatch = componentTag.match(/<([a-z][A-Z]+)(-[a-z][A-Z]+)+/gmi) ?? [];
-            const name = (0, utils_1.pascalize)(componentTagMatch[0].substring(1));
-            const propsString = componentTag.match(/:([a-z]*)(-[a-z]+)?/gm);
-            const props = propsString ? propsString.map((prop) => ({ name: prop.substring(1), type: 'boolean' })) : [];
-            const eventsString = componentTag.match(/@([a-z]*)(-[a-z]+)?/gm);
-            const events = eventsString ? eventsString.map((event) => ({ name: event.substring(1), output: { type: 'event' } })) : [];
-            return {
-                name, props, events
-            };
-        });
+        this.slotsFactory = new SlotsFactory_1.default(vueCode);
+        this.propsFactory = new PropsFactory_1.default(vueCode);
+        this.childrenFactory = new ChildrenFactory_1.default(vueCode);
+        this.eventsFactory = new EventFactory_1.default(vueCode);
+        this.test = this.buildTestSuites();
     }
     buildImports() {
         return `
@@ -59,70 +31,48 @@ class UnitTestFactory {
     buildCreateWrapper() {
         const creationWrapper = `
             const createWrapper = ({
-                ${this.propsBuilder.props.length > 0 ? 'props = defaultProps,' : ''}
-              ${this.slots.length > 0 ? 'slots = defaultSlots' : ''}
+                ${this.propsFactory.props.length > 0 ? 'props = defaultProps,' : ''}
+              ${this.slotsFactory.slots.length > 0 ? 'slots = defaultSlots' : ''}
             } = {}) =>
-              wrapperFactory(${this.name} ${this.propsBuilder.props.length > 0 || this.slots.length > 0 ? `, {
-                ${this.propsBuilder.props.length > 0 ? 'props' : ''}
-                ${this.slots?.length > 0 ? 'slots' : ''}
+              wrapperFactory(${this.name} ${this.propsFactory.props.length > 0 || this.slotsFactory.slots.length > 0 ? `, {
+                ${this.propsFactory.props.length > 0 ? 'props' : ''}
+                ${this.slotsFactory.slots?.length > 0 ? 'slots' : ''}
               }` : ''})
               
             let wrapper = createWrapper()
         `;
-        return this.propsBuilder.getDefaultProps(this.name) + creationWrapper;
+        return this.propsFactory.getDefaultProps(this.name) + creationWrapper;
     }
-    buildFindWrappers() {
-        return `${this.children.map((child) => `
-                let find${child.name} = (wrapper) => wrapper.findComponent(${child.name})
-        `)}`;
+    async lintTestSuites() {
+        return this.test;
     }
-    buildSlotsIt() {
-        if (this.slots.length === 0) {
-            return '';
-        }
-        return `describe('rendering', () => {
-            ${this.slots.map((slot) => `it('should render the ${slot} slot', () => {
-               expect(wrapper.html()).toContain('I fill the ${slot} slot')
-             })`)}
-        })`;
-    }
-    buildEventsIt(child) {
-        if (child.events?.length === 0) {
-            return '';
-        }
-        const chooseAction = (type) => {
-            return type === 'event' ? 'emit' : 'dispatch';
-        };
-        return `describe('events', () => {
-            ${child.events?.map((event) => `it('should ${chooseAction(event.output.type)} ${event.name} when ${child.name} emits ${event.name}', () => {
-                await ${child.name}Wrapper.vm.$emit(${event.name})
-                expect(wrapper.emitted('my-event')).toHaveLength(1)
-             })`)}
-        })`;
-    }
-    buildTestSuites(children) {
-        return `
-                ${children.map((child) => `
+    buildTestSuites() {
+        const imports = this.buildImports();
+        const createWrapper = this.buildCreateWrapper();
+        const findWrappers = this.childrenFactory.buildFindWrappers();
+        const testsSuite = `
+                ${this.childrenFactory.children.map((child) => `
                     let ${child.name}Wrapper = find${child.name}(wrapper)
                 `)}
 
                 describe(${this.name}, () => {
                      beforeEach(() => {
                         wrapper = createWrapper()
-                        ${children.map((child) => `${child.name}Wrapper = find${child.name}(wrapper)\n`)}
+                        ${this.childrenFactory.children.map((child) => `${child.name}Wrapper = find${child.name}(wrapper)\n`)}
                      })
 
-                     ${this.propsBuilder.buildPropsIt(children)}
+                     ${this.propsFactory.buildPropsIt(this.childrenFactory.children)}
                      
-                      ${this.buildSlotsIt()}       
+                      ${this.slotsFactory.buildSlotsIt()}       
                       
-                    ${children.map((child) => `
-                        ${this.buildEventsIt(child)}
+                    ${this.childrenFactory.children.map((child) => `
+                        ${this.eventsFactory.buildEventsIt(child)}
                     `)}
                 })
                 
                 
         `;
+        return imports + createWrapper + findWrappers + testsSuite;
     }
 }
 exports.default = UnitTestFactory;

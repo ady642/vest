@@ -38,7 +38,7 @@
 
                      
         
-                describe('binding with ElBadge', () => {
+          describe('binding with ElBadge', () => {
             test('static props', () => {
               expect(ElBadgeWrapper.attributes('hidden')).toBe(true)
 ,expect(ElBadgeWrapper.attributes('value')).toBe(true)

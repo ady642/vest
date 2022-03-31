@@ -1,6 +1,8 @@
 {
   "name": "unittestgen",
+  "publisher": "AdriHM",
   "displayName": "unittestgen",
+  "repository": "https://gitlab.com/ady642/unittestgen",
   "description": "utility to generate test suites for a vue component",
   "version": "0.0.1",
   "engines": {
@@ -24,10 +26,10 @@
   "scripts": {
     "dev": "nodemon",
     "vscode:prepublish": "npm run compile",
-    "compile": "vscode_extension/node_modules/.bin/tsc -p ./",
-    "watch": "vscode_extension/node_modules/.bin/tsc -watch -p ./",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
     "pretest": "npm run compile && npm run lint",
-    "lint": "vscode_extension/node_modules/.bin/eslint src --ext ts",
+    "lint": "eslint src --ext ts",
     "test": "node out/test/runTest.js"
   },
   "devDependencies": {

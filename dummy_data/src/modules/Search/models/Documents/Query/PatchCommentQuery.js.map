@@ -1,0 +1,1 @@
+{"version":3,"file":"PatchCommentQuery.js","sourceRoot":"","sources":["PatchCommentQuery.ts"],"names":[],"mappings":";;AAOA,MAAM,iBAAiB;IAIrB,YAAY,EAAE,UAAU,EAAE,KAAK,KAAK,EAA6B;QAC/D,IAAI,CAAC,UAAU,GAAG,UAAU,CAAA;QAC5B,IAAI,CAAC,KAAK,GAAG,KAAK,CAAA;IACpB,CAAC;CACF;AAED,kBAAe,iBAAiB,CAAA"}

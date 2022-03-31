@@ -3,8 +3,6 @@ import PropsFactory from "./PropsFactory";
 import ChildrenFactory from "./ChildrenFactory";
 import EventFactory from "./EventFactory/EventFactory";
 import SlotsFactory from "./SlotsFactory/SlotsFactory";
-import {lint} from "../lint";
-
 
 // TODO: GET REAL TYPE OF EVENT HANDLER
 // TODO: GET REAL NAME EVENT EMITTED IF IS EMIT TYPE
@@ -60,7 +58,7 @@ class UnitTestFactory {
     }
 
     public async lintTestSuites () {
-        return await lint(this.test);
+        return this.test;
     }
 
     private buildTestSuites() {

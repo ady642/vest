@@ -1,5 +1,6 @@
 node_modules
 dummy_data
+out
 
 .idea
 .vscode

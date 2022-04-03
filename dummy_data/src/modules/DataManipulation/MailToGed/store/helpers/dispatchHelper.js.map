@@ -1,1 +1,0 @@
-{"version":3,"file":"dispatchHelper.js","sourceRoot":"","sources":["dispatchHelper.ts"],"names":[],"mappings":";;AAEA,sEAA4E;AAE5E,MAAM,eAAe,GAAG,CACtB,KAAqC,EAChB,EAAE,CAAC,CAAC;IACzB,wBAAwB,EAAE,KAAK,IAAI,EAAE;QACnC,MAAM,KAAK,CAAC,QAAQ,CAAC,IAAA,uBAAe,EAAC,0BAA0B,CAAC,CAAC,CAAA;IACnE,CAAC;CACF,CAAC,CAAA;AAMF,kBAAe,eAAe,CAAA"}

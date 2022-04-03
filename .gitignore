@@ -1,0 +1,6 @@
+node_modules
+dummy_data
+
+.idea
+.vscode
+.vscode-test

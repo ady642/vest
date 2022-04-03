@@ -12,7 +12,8 @@
     "Other"
   ],
   "activationEvents": [
-    "onCommand:unittestgen.generateTestSuites"
+    "onCommand:unittestgen.generateTestSuites",
+    "onStartupFinished:unittestgen.activateCodeLens"
   ],
   "main": "out/extension.js",
   "contributes": {
@@ -23,6 +24,13 @@
       }
     ]
   },
+  "keybindings": [
+    {
+        "command": "unittestgen.generateTestSuites",
+        "key": "ctrl+shift+,",
+        "mac": "shift+cmd+,"
+    }
+  ],
   "scripts": {
     "dev": "nodemon",
     "vscode:prepublish": "npm run compile",

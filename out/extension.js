@@ -5,7 +5,11 @@ const vscode = require("vscode");
 const UnitTestFactory_1 = require("./templates/UnitTestFactory");
 const fs = require("fs");
 const utils_1 = require("./utils");
+const child_process_1 = require("child_process");
+const CodelensProvider_1 = require("./CodelensProvider");
 function activate(context) {
+    const codelensProvider = new CodelensProvider_1.CodelensProvider();
+    vscode.languages.registerCodeLensProvider("*", codelensProvider);
     let disposable = vscode.commands.registerCommand('unittestgen.generateTestSuites', async () => {
         const path = vscode?.window?.activeTextEditor?.document.fileName ?? '';
         const data = fs.readFileSync(path, 'utf8');
@@ -19,6 +23,11 @@ function activate(context) {
             if (err) {
                 console.error(err);
             }
+            (0, child_process_1.exec)((0, utils_1.buildEsLintCommand)(testPath), () => {
+                if (err) {
+                    console.log('error: ' + err);
+                }
+            });
             vscode.window.showInformationMessage(`Unit test generated for ${(0, utils_1.getFileName)(path)}`, 'Open test')
                 .then(() => {
                 vscode.workspace.openTextDocument(testPath).then(doc => {

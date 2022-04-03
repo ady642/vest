@@ -40,7 +40,7 @@ class ChildrenFactory {
         `)}`;
     }
 
-    elChildren() { 
+    elChildren() {
         return this.children.filter((child) => elementPlusRegexMatch.test(child.name));
     }
 }

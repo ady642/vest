@@ -1,9 +1,14 @@
 import * as vscode from 'vscode';
 import UnitTestFactory from "./templates/UnitTestFactory";
 import * as fs from 'fs';
-import { getFileName, getPath } from './utils';
+import { buildEsLintCommand, getFileName, getPath } from './utils';
+import { exec as executeTerminalCommand } from 'child_process';
+import { CodelensProvider } from './CodelensProvider';
 
 export function activate(context: vscode.ExtensionContext) {
+    const codelensProvider = new CodelensProvider();
+
+    vscode.languages.registerCodeLensProvider("*", codelensProvider);
 
     let disposable = vscode.commands.registerCommand('unittestgen.generateTestSuites', async () => {
         const path = vscode?.window?.activeTextEditor?.document.fileName ?? '';
@@ -21,6 +26,12 @@ export function activate(context: vscode.ExtensionContext) {
 
         fs.writeFile(testPath, unitTestFactory.test, function (err) {
             if (err) { console.error(err); }
+
+            executeTerminalCommand(buildEsLintCommand(testPath), () => {
+                if (err) {
+                    console.log('error: ' + err);
+                }
+            });
 
             vscode.window.showInformationMessage(`Unit test generated for ${getFileName(path)}`, 'Open test')
                 .then(() => {

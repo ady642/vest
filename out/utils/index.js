@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.pascalize = exports.convertObjToArrayOfObj = exports.addDoubleQuotes = exports.findClosingMatchIndex = exports.getPath = exports.getFileName = void 0;
+exports.buildEsLintCommand = exports.pascalize = exports.convertObjToArrayOfObj = exports.addDoubleQuotes = exports.findClosingMatchIndex = exports.getPath = exports.getFileName = void 0;
 const getFileName = (thePath) => thePath.substring(thePath.lastIndexOf('/') + 1).split('.')[0];
 exports.getFileName = getFileName;
 const getPath = (pathAndName) => pathAndName.substring(0, pathAndName.lastIndexOf('/'));
@@ -34,4 +34,6 @@ exports.pascalize = pascalize;
 function clearAndUpper(text) {
     return text.replace(/-/, "").toUpperCase();
 }
+const buildEsLintCommand = (path) => `npx eslint ${path} --no-ignore --fix`;
+exports.buildEsLintCommand = buildEsLintCommand;
 //# sourceMappingURL=index.js.map

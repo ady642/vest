@@ -4,7 +4,7 @@
   "displayName": "unittestgen",
   "repository": "https://gitlab.com/ady642/unittestgen",
   "description": "utility to generate test suites for a vue component",
-  "version": "1.0.1",
+  "version": "1.1.1",
   "engines": {
     "vscode": "^1.65.0"
   },
@@ -26,9 +26,9 @@
   },
   "keybindings": [
     {
-        "command": "unittestgen.generateTestSuites",
-        "key": "ctrl+shift+,",
-        "mac": "shift+cmd+,"
+      "command": "unittestgen.generateTestSuites",
+      "key": "ctrl+shift+,",
+      "mac": "shift+cmd+,"
     }
   ],
   "scripts": {

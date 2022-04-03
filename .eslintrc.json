@@ -9,6 +9,9 @@
         "@typescript-eslint"
     ],
     "rules": {
+        "no-multiple-empty-lines": "error",
+        "no-trailing-spaces": "error",
+        "indent": 2,
         "@typescript-eslint/naming-convention": "warn",
         "@typescript-eslint/semi": "warn",
         "curly": "warn",
@@ -23,3 +26,5 @@
         "dummy_data"
     ]
 }
+
+// cvj5xqwbnisg7b3wmxp3hijwrobtqhut3m2p4c3u63cvdjhot7ea

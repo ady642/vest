@@ -50,7 +50,7 @@ class PropsFactory {
         ${children.map((child) => `
           describe('binding with ${child.name}', () => {
             test('static props', () => {
-              ${child.props.map((prop) => `expect(${child.name}Wrapper.attributes('${prop.name}')).toBe(${this.getDefaultValueByType(prop.type)})\n`)} })
+              ${child.props.map((prop) => `expect(${child.name}Wrapper.attributes('${prop.name}')).toBe(${this.getDefaultValueByType(prop.type)})`).join('\n')} })
           })
         `)}
         `;

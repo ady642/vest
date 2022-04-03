@@ -4,7 +4,7 @@ class SlotsFactory {
     constructor(vueCode) {
         const slots = vueCode.match(/<slot \/>/gm);
         const matchSlots = (slot) => slot.match(/"([a-z]*)"/) ?? [];
-        this.slots = slots?.map((slot) => matchSlots(slot) ? matchSlots(slot)[0] : 'default') ?? [];
+        this.slots = slots?.map((slot) => matchSlots(slot).length > 0 ? matchSlots(slot)[0] : 'default') ?? [];
     }
     buildSlotsIt() {
         if (this.slots.length === 0) {
@@ -15,6 +15,13 @@ class SlotsFactory {
                expect(wrapper.html()).toContain('I fill the ${slot} slot')
              })`)}
         })`;
+    }
+    getDefaultSlots() {
+        return this.slots.length > 0 ? `           
+            const defaultSlots = {
+              ${this.slots.map((slot) => `${slot}: 'I fill the ${slot} slot'`)}
+            }  
+        ` : '';
     }
 }
 exports.default = SlotsFactory;

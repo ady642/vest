@@ -1,6 +1,6 @@
 import { getFileName } from "../utils";
 import PropsFactory from "./PropsFactory";
-import ChildrenFactory from "./ChildrenFactory";
+import ChildrenFactory, { childType } from "./ChildrenFactory";
 import EventFactory from "./EventFactory/EventFactory";
 import SlotsFactory from "./SlotsFactory/SlotsFactory";
 
@@ -44,17 +44,20 @@ class UnitTestFactory {
         const creationWrapper = `
             const createWrapper = ({
                 ${ this.propsFactory.props.length > 0 ? 'props = defaultProps,': '' }
-              ${ this.slotsFactory.slots.length > 0 ? 'slots = defaultSlots': '' }
+                ${ this.slotsFactory.slots.length > 0 ? 'slots = defaultSlots': '' }
             } = {}) =>
               wrapperFactory(${this.name} ${this.propsFactory.props.length > 0 || this.slotsFactory.slots.length > 0 ? `, {
-                ${ this.propsFactory.props.length > 0 ? 'props': '' }
-                ${ this.slotsFactory.slots?.length > 0 ? 'slots': '' }
+                ${ this.propsFactory.props.length > 0 ? 'props,': '' }
+                ${ this.slotsFactory.slots?.length > 0 ? 'slots,': '' }
+                global: {
+                    ${ this.childrenFactory.elChildren().length > 0 ? `stubs: ${this.childrenFactory.elChildren().flatMap(child => child.name)}`: '' }
+                }
               }`: ''})
               
             let wrapper = createWrapper()
         `;
 
-        return this.propsFactory.getDefaultProps(this.name) + creationWrapper;
+        return creationWrapper;
     }
 
     public async lintTestSuites () {
@@ -63,33 +66,29 @@ class UnitTestFactory {
 
     private buildTestSuites() {
         const imports = this.buildImports();
+        const defaultProps = this.propsFactory.getDefaultProps(this.name);
+        const defaultSlots = this.slotsFactory.getDefaultSlots();
         const createWrapper = this.buildCreateWrapper();
         const findWrappers = this.childrenFactory.buildFindWrappers();
 
         const testsSuite = `
-                ${this.childrenFactory.children.map((child) => `
-                    let ${child.name}Wrapper = find${child.name}(wrapper)
-                `)}
-
                 describe(${this.name}, () => {
-                     beforeEach(() => {
-                        wrapper = createWrapper()
-                        ${this.childrenFactory.children.map((child) => `${child.name}Wrapper = find${child.name}(wrapper)\n`)}
-                     })
+                    beforeEach(() => {
+                       wrapper = createWrapper()
+                       ${this.childrenFactory.children.map((child) => `${child.name}Wrapper = find${child.name}(wrapper)`).join('\n')}
+                    })
 
-                     ${this.propsFactory.buildPropsIt(this.childrenFactory.children)}
+                    ${this.propsFactory.buildPropsIt(this.childrenFactory.children)}
                      
-                      ${this.slotsFactory.buildSlotsIt()}       
+                    ${this.slotsFactory.buildSlotsIt()}       
                       
                     ${this.childrenFactory.children.map((child) => `
                         ${this.eventsFactory.buildEventsIt(child)}
-                    `)}
-                })
-                
-                
+                    `).join('\n')}
+                })  
         `;
 
-        return imports + createWrapper + findWrappers + testsSuite;
+        return imports + defaultProps + defaultSlots + createWrapper + findWrappers + testsSuite;
     }
 }
 

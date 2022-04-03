@@ -8,7 +8,7 @@ class SlotsFactory {
 
         const matchSlots = (slot: string) => slot.match(/"([a-z]*)"/) ?? [];
 
-        this.slots =  slots?.map((slot) => matchSlots(slot) ? matchSlots(slot)[0] : 'default') ?? [];
+        this.slots =  slots?.map((slot) => matchSlots(slot).length > 0 ? matchSlots(slot)[0] : 'default') ?? [];
     }
 
     buildSlotsIt() {
@@ -23,6 +23,14 @@ class SlotsFactory {
              })`
         )}
         })`;
+    }
+
+    getDefaultSlots() {
+        return this.slots.length > 0 ? `           
+            const defaultSlots = {
+              ${this.slots.map((slot) => `${slot}: 'I fill the ${slot} slot'`)}
+            }  
+        ` : '';
     }
 }
 

@@ -5,34 +5,34 @@ import { getFileName, getPath } from './utils';
 
 export function activate(context: vscode.ExtensionContext) {
 
-	let disposable = vscode.commands.registerCommand('unittestgen.generateTestSuites', async () => { 		
-		const path = vscode?.window?.activeTextEditor?.document.fileName ?? '';
+    let disposable = vscode.commands.registerCommand('unittestgen.generateTestSuites', async () => {
+        const path = vscode?.window?.activeTextEditor?.document.fileName ?? '';
 
-		const data = fs.readFileSync(path, 'utf8');
+        const data = fs.readFileSync(path, 'utf8');
 
-		const unitTestFactory = new UnitTestFactory(path, data);
-		const testPath = path.replace('src', 'tests/unit/src').replace('.vue', '.spec.ts');
+        const unitTestFactory = new UnitTestFactory(path, data);
+        const testPath = path.replace('.vue', '.spec.ts');
 
-		const pathWithoutFileName = getPath(testPath);
+        const pathWithoutFileName = getPath(testPath);
 
-		if (!fs.existsSync(pathWithoutFileName)){
-			fs.mkdirSync(pathWithoutFileName, { recursive: true });
-		}
+        if (!fs.existsSync(pathWithoutFileName)){
+            fs.mkdirSync(pathWithoutFileName, { recursive: true });
+        }
 
-		fs.writeFile(testPath, unitTestFactory.test, function (err) {
-			if (err) { console.error(err); }
+        fs.writeFile(testPath, unitTestFactory.test, function (err) {
+            if (err) { console.error(err); }
 
-			vscode.window.showInformationMessage(`Unit test generated for ${getFileName(path)}`, 'Open test')
-				.then(() => {
-					vscode.workspace.openTextDocument(testPath).then(doc => {
-					vscode.window.showTextDocument(doc);
-					});
-				});
+            vscode.window.showInformationMessage(`Unit test generated for ${getFileName(path)}`, 'Open test')
+                .then(() => {
+                    vscode.workspace.openTextDocument(testPath).then(doc => {
+                        vscode.window.showTextDocument(doc);
+                    });
+                });
 		  });
 
-	});
+    });
 
-	context.subscriptions.push(disposable);
+    context.subscriptions.push(disposable);
 }
 
 // this method is called when your extension is deactivated

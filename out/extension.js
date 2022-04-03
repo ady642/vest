@@ -10,7 +10,7 @@ function activate(context) {
         const path = vscode?.window?.activeTextEditor?.document.fileName ?? '';
         const data = fs.readFileSync(path, 'utf8');
         const unitTestFactory = new UnitTestFactory_1.default(path, data);
-        const testPath = path.replace('src', 'tests/unit/src').replace('.vue', '.spec.ts');
+        const testPath = path.replace('.vue', '.spec.ts');
         const pathWithoutFileName = (0, utils_1.getPath)(testPath);
         if (!fs.existsSync(pathWithoutFileName)) {
             fs.mkdirSync(pathWithoutFileName, { recursive: true });

@@ -18,10 +18,10 @@ class SlotsFactory {
 
         return `describe('rendering', () => {
             ${this.slots.map((slot) =>
-            `it('should render the ${slot} slot', () => {
+        `it('should render the ${slot} slot', () => {
                expect(wrapper.html()).toContain('I fill the ${slot} slot')
              })`
-        )}
+    )}
         })`;
     }
 

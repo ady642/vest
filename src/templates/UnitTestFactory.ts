@@ -23,8 +23,8 @@ class UnitTestFactory {
         this.path = path;
         this.name = getFileName(path);
 
-        this.slotsFactory = new SlotsFactory(vueCode);
         this.propsFactory = new PropsFactory(vueCode);
+        this.slotsFactory = new SlotsFactory(vueCode);
         this.childrenFactory = new ChildrenFactory(vueCode);
         this.eventsFactory = new EventFactory(vueCode);
 

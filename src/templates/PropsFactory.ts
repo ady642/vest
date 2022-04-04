@@ -12,14 +12,13 @@ class PropsFactory {
     props: propType[];
 
     constructor(vueCode: string) {
-        const stringSearched = 'props: ';
-        const propsIndex = vueCode.indexOf(stringSearched);
+        const { propsIndex, stringSearched } = this.findPropsIndex(vueCode);
 
         if(propsIndex === -1) {
             this.props = [];
         }
 
-        const propsOpeningBrace = vueCode.indexOf(stringSearched) + stringSearched.length;
+        const propsOpeningBrace = propsIndex + stringSearched.length;
         const propsClosingBrace = findClosingMatchIndex(vueCode,  propsOpeningBrace);
         const propsString = vueCode.substring(propsOpeningBrace, propsClosingBrace + 1);
         const propsStringifies = addDoubleQuotes(propsString);
@@ -43,6 +42,19 @@ class PropsFactory {
 
             return { name, type: value.toLowerCase()};
         }) as propType[];
+    }
+
+    private findPropsIndex(vueCode: string): { propsIndex: number, stringSearched: string } {
+        const isScriptSetupRegex = /^(?=.*script)(?=.*setup).*/;
+
+        const stringSearched = isScriptSetupRegex.test(vueCode) ? 'props: ': 'defineProps(';
+        const propsIndex = vueCode.indexOf(stringSearched);
+
+        return { propsIndex, stringSearched };
+    }
+
+    static constructFromScriptSetup(vueCode: string) {
+        return new this(vueCode);
     }
 
     buildPropsIt(children: childType[]) {

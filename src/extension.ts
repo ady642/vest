@@ -10,7 +10,7 @@ export function activate(context: vscode.ExtensionContext) {
 
     vscode.languages.registerCodeLensProvider("*", codelensProvider);
 
-    let disposable = vscode.commands.registerCommand('unittestgen.generateTestSuites', async () => {
+    let disposable = vscode.commands.registerCommand('vest.generateTestSuites', async () => {
         const path = vscode?.window?.activeTextEditor?.document.fileName ?? '';
 
         const data = fs.readFileSync(path, 'utf8');

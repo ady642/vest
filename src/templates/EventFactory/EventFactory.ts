@@ -28,11 +28,11 @@ class EventFactory {
 
         return `describe('events', () => {
             ${child.events?.map((event) =>
-            `it('should ${chooseAction(event.output.type)} ${event.name} when ${child.name} emits ${event.name}', () => {
+        `it('should ${chooseAction(event.output.type)} ${event.name} when ${child.name} emits ${event.name}', () => {
                 await ${child.name}Wrapper.vm.$emit(${event.name})
                 expect(wrapper.emitted('my-event')).toHaveLength(1)
              })`
-        )}
+    )}
         })`;
     }
 }

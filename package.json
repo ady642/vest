@@ -1,7 +1,7 @@
 {
-  "name": "unittestgen",
+  "name": "vest",
   "publisher": "AdriHM",
-  "displayName": "unittestgen",
+  "displayName": "vest",
   "icon": "logo.png",
   "repository": "https://gitlab.com/ady642/unittestgen",
   "description": "utility to generate test suites for a vue component",
@@ -13,21 +13,21 @@
     "Other"
   ],
   "activationEvents": [
-    "onCommand:unittestgen.generateTestSuites",
-    "onStartupFinished:unittestgen.activateCodeLens"
+    "onCommand:vest.generateTestSuites",
+    "onStartupFinished:vest.activateCodeLens"
   ],
   "main": "out/extension.js",
   "contributes": {
     "commands": [
       {
-        "command": "unittestgen.generateTestSuites",
-        "title": "Generate test suites"
+        "command": "vest.generateTestSuites",
+        "title": "Vest - Generate unit tests"
       }
     ]
   },
   "keybindings": [
     {
-      "command": "unittestgen.generateTestSuites",
+      "command": "vest.generateTestSuites",
       "key": "ctrl+shift+,",
       "mac": "shift+cmd+,"
     }
@@ -63,6 +63,7 @@
     "typescript": "^4.5.5"
   },
   "dependencies": {
+    "babel-jest": "^27.5.1",
     "mkdirp": "^1.0.4"
   }
 }

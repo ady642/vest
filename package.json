@@ -3,9 +3,9 @@
   "publisher": "AdriHM",
   "displayName": "vest",
   "icon": "logo.png",
-  "repository": "https://gitlab.com/ady642/unittestgen",
+  "repository": "https://github.com/ady642/vest",
   "description": "utility to generate test suites for a vue component",
-  "version": "1.1.2",
+  "version": "1.0.0",
   "engines": {
     "vscode": "^1.65.0"
   },

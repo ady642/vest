@@ -12,15 +12,12 @@ import SlotsFactory from "./SlotsFactory/SlotsFactory";
 
 // TODO: GET REAL TYPE OF PROPS CHILD
 
-// TODO: 
-
 class UnitTestFactory {
     name: string;
     path: string;
     propsFactory: PropsFactory;
     slotsFactory: SlotsFactory;
     childrenFactory: ChildrenFactory;
-    eventsFactory: EventFactory;
     test: string;
 
     constructor(path: string, vueCode: string) {
@@ -30,7 +27,6 @@ class UnitTestFactory {
         this.propsFactory = new PropsFactory(vueCode);
         this.slotsFactory = new SlotsFactory(vueCode);
         this.childrenFactory = new ChildrenFactory(vueCode);
-        this.eventsFactory = new EventFactory(vueCode);
 
         this.test = this.buildTestSuites();
     }
@@ -87,7 +83,7 @@ class UnitTestFactory {
                     ${this.slotsFactory.buildSlotsIt()}       
                       
                     ${this.childrenFactory.children.map((child) => `
-                        ${this.eventsFactory.buildEventsIt(child)}
+                        ${child.eventFactory?.buildEventsIt()}
                     `).join('\n')}
                 })  
         `;

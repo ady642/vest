@@ -1,16 +1,17 @@
 import {pascalize} from "../utils";
 import {propType} from "./PropsFactory";
-import {eventType} from "./EventFactory/EventFactory";
+import EventFactory, {eventType} from "./EventFactory/EventFactory";
 
 export type childType = {
     name: string,
     props: propType[]
-    events?: eventType[]
+    eventFactory?: EventFactory
 };
 
 const htmlTags = 'template|slot|script|style|div|section|a|button|p|select|textarea|main|head|h1|h2|h3|header|i|iframe|img|span';
 
 const elementPlusRegexMatch = /^El+([A-Z])/;
+const myPulseRegexMatch = /^Mp+([A-Z])/;
 class ChildrenFactory {
     children: childType[];
 
@@ -19,15 +20,17 @@ class ChildrenFactory {
         const componentsTags = vueCode.match(regexComponentInKebabCase) ?? [];
 
         this.children = componentsTags.map((componentTag) => {
-            const componentTagMatch = componentTag.match(/<([a-zA-Z-]+)/) ?? [];
-            const name = pascalize(componentTagMatch[0].substring(1));
+            const nameInKebabOrPascalCase = componentTag.match(/<([a-zA-Z-]+)/) ?? [];
+            const name = pascalize(nameInKebabOrPascalCase[0].substring(1));
             const propsString = componentTag.match(/:([a-z]*)(-[a-z]+)?/gm);
             const props = propsString ? propsString.map((prop) => ({name: prop.substring(1), type: 'boolean'})) : [];
-            const eventsString = componentTag.match(/@([a-z]*)(-[a-z]+)?/gm);
-            const events: eventType[] = eventsString ? eventsString.map((event) => ({ name: event.substring(1), output: { type: 'event' } })) : [];
+
+            const eventFactory = new EventFactory(componentTag, name, vueCode);
 
             return {
-                name, props, events
+                name,
+                props,
+                eventFactory
             };
         }) as childType[];
     }
@@ -35,6 +38,7 @@ class ChildrenFactory {
     buildFindWrappers() {
         return `${this.children.map((child) => `
                 ${ elementPlusRegexMatch.test(child.name) ? `const { ${child.name} } = useElement()`: '' }
+                ${ myPulseRegexMatch.test(child.name) ? `const { ${child.name} } = useStyleguide()`: '' }
                 let find${child.name} = (wrapper) => wrapper.findComponent(${child.name})
                 let ${child.name}Wrapper = find${child.name}(wrapper)
         `)}`;

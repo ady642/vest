@@ -1,31 +1,42 @@
-import {childType} from "../ChildrenFactory";
+type possibleOutputType = 'event' | 'externalCall' | 'dispatch' | 'changeChildProp';
 
 export type eventType = {
     name: string
-    output: {
-        type: 'event' | 'externalCall' | 'dispatch' | 'changeChildProp'
-    }
+    outputType: possibleOutputType
 };
-
 class EventFactory {
     events: eventType[];
+    name: string;
 
+    constructor(componentTag: string, name: string,  vueCode: string) {
+        this.name = name;
+        const eventsString = componentTag.match(/@([a-z]*)(-[a-z]+)?/gm);
+        const events: eventType[] = eventsString ? eventsString.map((event) => (
+            { name: event.substring(1), outputType: this.getOutputType() }
+        )) : [];
 
-    buildEventsIt(child: childType) {
-        if(child.events?.length === 0) {
+        this.events = events;
+    }
+
+    getOutputType(): possibleOutputType {
+        return 'event';
+    }
+
+    buildEventsIt() {
+        if(this.events?.length === 0) {
             return '';
         }
 
-        const chooseAction = (type: string) => {
-            return type === 'event' ? 'emit': 'dispatch';
+        const chooseAction = (outputType: string) => {
+            return outputType === 'event' ? 'emit': 'dispatch';
         };
 
         return `describe('events', () => {
-            ${child.events?.map((event) =>
-        `it('should ${chooseAction(event.output.type)} ${event.name} when ${child.name} emits ${event.name}', async () => {
-                await ${child.name}Wrapper.vm.$emit('${event.name}')
+            ${this.events?.map((event) =>
+        `it('should ${chooseAction(event.outputType)} ${event.name} when ${this.name} emits ${event.name}', async () => {
+                await ${this.name}Wrapper.vm.$emit('${event.name}')
                 expect(wrapper.emitted('my-event')).toHaveLength(1)
-             })`
+            })`
     )}
         })`;
     }

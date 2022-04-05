@@ -12,4 +12,15 @@ describe('PropsFactory', () => {
             ]);
         });
     });
+
+    it('should construct the props from a Vue 3 script setup component', () => {
+        const path = './dummy_data/components/Breadcrumb/NattoBreadcrumb.vue';
+        const vueCode = fs.readFileSync(path, 'utf8');
+
+        expect(PropsFactory.constructFromScriptSetup(vueCode).props).toStrictEqual([
+            { name: 'breadcrumbs', type: 'Array' },
+            { name: 'disabledBreadcrumbs', type: 'boolean' },
+            { name: 'ellipsed', type: 'boolean' },
+        ]);
+    });
 });

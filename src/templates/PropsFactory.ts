@@ -16,6 +16,7 @@ class PropsFactory {
 
         if(propsIndex === -1) {
             this.props = [];
+            return;
         }
 
         const propsOpeningBrace = propsIndex + stringSearched.length;
@@ -45,9 +46,9 @@ class PropsFactory {
     }
 
     private findPropsIndex(vueCode: string): { propsIndex: number, stringSearched: string } {
-        const isScriptSetupRegex = /^(?=.*script)(?=.*setup).*/;
+        const isScriptSetupRegex = /(?=.*script)(?=.*setup).*/g;
 
-        const stringSearched = isScriptSetupRegex.test(vueCode) ? 'props: ': 'defineProps(';
+        const stringSearched = isScriptSetupRegex.test(vueCode) ? 'defineProps(': 'props: ';
         const propsIndex = vueCode.indexOf(stringSearched);
 
         return { propsIndex, stringSearched };

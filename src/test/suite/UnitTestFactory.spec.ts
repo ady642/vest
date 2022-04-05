@@ -6,6 +6,40 @@ const convertStringPropsToObject = (propsString: string): string => {
     return JSON.parse(propsString);
 };
 
+const regexPascalAndKebab = /[A-Z][a-z]+|([a-z]-[a-z]+)+/g;
+
+const scriptSetupRegex = /(?=.*script)(?=.*setup).*/;
+
+describe('regex', () => {
+    it('should match mp-breadcrumb', () => {
+        const match = 'mp-breadcrumb'.match(regexPascalAndKebab);
+        expect(match).toBeTruthy();
+    });
+    it('should match MpBreadcrumb', () => {
+        const match = 'MpBreadcrumb'.match(regexPascalAndKebab);
+        expect(match).toBeTruthy();
+    });
+    it('should not match TEST TEST', () => {
+        const match = 'TEST TEST'.match(regexPascalAndKebab);
+        expect(match).toBeFalsy();
+    });
+
+    it('should match <script and setup word in line', () => {
+        const match = '<script lang="ts" setup>'.match(scriptSetupRegex);
+        expect(match).toBeTruthy();
+    });
+
+    it('should match <script and setup word in line', () => {
+        const match = '<script setup lang="ts">'.match(scriptSetupRegex);
+        expect(match).toBeTruthy();
+    });
+
+    it('should not match <script and setup word in line', () => {
+        const match = '<script lang="ts">'.match(scriptSetupRegex);
+        expect(match).toBeFalsy();
+    });
+});
+
 describe('convertStringPropsToObject', () => {
     it('should add double quotes on properties', () => {
         expect(addDoubleQuotes(`{ value: { type: Number, required: true } }`)).toEqual(

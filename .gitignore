@@ -5,3 +5,5 @@ out
 .idea
 .vscode
 .vscode-test
+
+*.vsix

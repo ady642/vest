@@ -3,9 +3,11 @@ import {childType} from "./ChildrenFactory";
 
 export type propVueType = { type: string, required?: boolean } | 'Number' | 'Boolean' | 'String';
 
+type possibleTypes = 'number' | 'boolean' | 'string' | 'array';
+
 export type propType = {
     name: string
-    type: 'number' | 'boolean' | 'string'
+    type: possibleTypes
 };
 
 class PropsFactory {
@@ -54,10 +56,6 @@ class PropsFactory {
         return { propsIndex, stringSearched };
     }
 
-    static constructFromScriptSetup(vueCode: string) {
-        return new this(vueCode);
-    }
-
     buildPropsIt(children: childType[]) {
         return `
         ${children.map((child) => `
@@ -69,25 +67,38 @@ class PropsFactory {
         `;
     }
 
-    getDefaultValueByType(type: 'number' | 'boolean' | 'string') {
+    getDefaultValueByType(type: possibleTypes) {
         const mappingDefaultValue = {
             'number': 1,
             'boolean': true,
             'string': "'test string'",
-            'array': []
+            'array': '[]'
         };
 
+        console.log(mappingDefaultValue[type]);
+
         return mappingDefaultValue[type];
+    }
+
+    getType(type: possibleTypes) {
+        const mappingType = {
+            'number': 'number',
+            'boolean': 'boolean',
+            'string': 'string',
+            'array': 'any[]'
+        };
+
+        return mappingType[type];
     }
 
     getDefaultProps(componentName: string) {
         return this.props.length > 0 ? `
             type ${componentName}Props = {
-              ${this.props.map((prop) => `${prop.name}: ${prop.type.toLowerCase()}`)}
+              ${this.props.map((prop) => `${prop.name}: ${this.getType(prop.type.toLowerCase() as possibleTypes)}`).join(';\n')}
             }
             
             const defaultProps: ${componentName}Props = {
-              ${this.props.map((prop) => `${prop.name}: ${this.getDefaultValueByType(prop.type.toLowerCase() as 'number' | 'boolean' | 'string')}`)}
+              ${this.props.map((prop) => `${prop.name}: ${this.getDefaultValueByType(prop.type.toLowerCase() as possibleTypes)}`)}
             }  
         ` : '';
     }

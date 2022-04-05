@@ -7,15 +7,9 @@ export type eventType = {
     }
 };
 
-
 class EventFactory {
     events: eventType[];
 
-    constructor(vueCode: string) {
-        this.events = [
-            { name: 'click', output: { type: 'event' } }
-        ];
-    }
 
     buildEventsIt(child: childType) {
         if(child.events?.length === 0) {
@@ -28,8 +22,8 @@ class EventFactory {
 
         return `describe('events', () => {
             ${child.events?.map((event) =>
-        `it('should ${chooseAction(event.output.type)} ${event.name} when ${child.name} emits ${event.name}', () => {
-                await ${child.name}Wrapper.vm.$emit(${event.name})
+        `it('should ${chooseAction(event.output.type)} ${event.name} when ${child.name} emits ${event.name}', async () => {
+                await ${child.name}Wrapper.vm.$emit('${event.name}')
                 expect(wrapper.emitted('my-event')).toHaveLength(1)
              })`
     )}

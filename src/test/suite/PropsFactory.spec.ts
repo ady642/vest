@@ -7,7 +7,7 @@ describe('PropsFactory', () => {
             const path = './dummy_data/components/Badges/NattoBadge.vue';
             const vueCode = fs.readFileSync(path, 'utf8');
 
-            expect(PropsFactory.constructFromScriptSetup(vueCode).props).toStrictEqual([
+            expect(new PropsFactory(vueCode).props).toStrictEqual([
                 { name: 'value', type: 'Number' }
             ]);
         });
@@ -17,7 +17,7 @@ describe('PropsFactory', () => {
         const path = './dummy_data/components/Breadcrumb/NattoBreadcrumb.vue';
         const vueCode = fs.readFileSync(path, 'utf8');
 
-        expect(PropsFactory.constructFromScriptSetup(vueCode).props).toStrictEqual([
+        expect(new PropsFactory(vueCode).props).toStrictEqual([
             { name: 'breadcrumbs', type: 'Array' },
             { name: 'disabledBreadcrumbs', type: 'boolean' },
             { name: 'ellipsed', type: 'boolean' },

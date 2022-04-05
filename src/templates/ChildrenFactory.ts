@@ -19,7 +19,7 @@ class ChildrenFactory {
         const componentsTags = vueCode.match(regexComponentInKebabCase) ?? [];
 
         this.children = componentsTags.map((componentTag) => {
-            const componentTagMatch = componentTag.match(/<([a-z][A-Z]+)(-[a-z][A-Z]+)+/gmi) ?? [];
+            const componentTagMatch = componentTag.match(/<([a-zA-Z-]+)/) ?? [];
             const name = pascalize(componentTagMatch[0].substring(1));
             const propsString = componentTag.match(/:([a-z]*)(-[a-z]+)?/gm);
             const props = propsString ? propsString.map((prop) => ({name: prop.substring(1), type: 'boolean'})) : [];

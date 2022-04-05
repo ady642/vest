@@ -5,10 +5,14 @@ import EventFactory from "./EventFactory/EventFactory";
 import SlotsFactory from "./SlotsFactory/SlotsFactory";
 
 // TODO: GET REAL TYPE OF EVENT HANDLER
-// TODO: GET REAL NAME EVENT EMITTED IF IS EMIT TYPE
-// TODO: CREATE TEMPLATE IF IS DISPATCH
+
+// TODO: GET REAL NAME EVENT EMITTED IF IS EMIT TYPE (FROM EMITS list)
+
+// TODO: CREATE TEMPLATE STRING IF IS A DISPATCH HANDLER
+
 // TODO: GET REAL TYPE OF PROPS CHILD
-// TODO: IF COMPONENT TAG IS PascalCase it causes an error
+
+// TODO: 
 
 class UnitTestFactory {
     name: string;

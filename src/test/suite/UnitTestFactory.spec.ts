@@ -6,21 +6,22 @@ const convertStringPropsToObject = (propsString: string): string => {
     return JSON.parse(propsString);
 };
 
-const regexPascalAndKebab = /[A-Z][a-z]+|([a-z]-[a-z]+)+/g;
+// create a regex that match component name in kebab-case and in PascalCase
+const componentNameRegex = /<([a-zA-Z0-9-]+)/g;
 
 const scriptSetupRegex = /(?=.*script)(?=.*setup).*/;
 
 describe('regex', () => {
     it('should match mp-breadcrumb', () => {
-        const match = 'mp-breadcrumb'.match(regexPascalAndKebab);
+        const match = '<mp-breadcrumb'.match(componentNameRegex);
         expect(match).toBeTruthy();
     });
     it('should match MpBreadcrumb', () => {
-        const match = 'MpBreadcrumb'.match(regexPascalAndKebab);
+        const match = '<MpBreadcrumb'.match(componentNameRegex);
         expect(match).toBeTruthy();
     });
     it('should not match TEST TEST', () => {
-        const match = 'TEST TEST'.match(regexPascalAndKebab);
+        const match = 'TEST TEST'.match(componentNameRegex);
         expect(match).toBeFalsy();
     });
 

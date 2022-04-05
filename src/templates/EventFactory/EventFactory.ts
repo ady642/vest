@@ -12,13 +12,26 @@ class EventFactory {
         this.name = name;
         const eventsString = componentTag.match(/@([a-z]*)(-[a-z]+)?/gm);
         const events: eventType[] = eventsString ? eventsString.map((event) => (
-            { name: event.substring(1), outputType: this.getOutputType() }
+            { name: event.substring(1), outputType: this.getOutputType(event, vueCode) }
         )) : [];
 
         this.events = events;
     }
 
-    getOutputType(): possibleOutputType {
+    getOutputType(eventLine: string, vueCode: string): possibleOutputType {
+        const $emitRegex = /@(?:[a-zA-Z]+)(?:=")(?:\$emit\(')(([a-z]+-[a-z]+)|([a-z]+))'/gm;
+        const methodRegex = /@(?:[a-z]+)(?:-[a-z]+)?(?:=")(([a-zA-Z])*)(?:")/g;
+        const $emitMatch = eventLine.match($emitRegex);
+        const methodMatch = eventLine.match(methodRegex);
+
+        if($emitMatch) {
+            return 'event';
+        }
+
+        if(methodMatch) {
+            return 'dispatch';
+        }
+
         return 'event';
     }
 

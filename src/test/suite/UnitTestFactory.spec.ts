@@ -11,6 +11,10 @@ const componentNameRegex = /<([a-zA-Z0-9-]+)/g;
 
 const scriptSetupRegex = /(?=.*script)(?=.*setup).*/;
 
+// catch event handler if method
+const methodRegex = /@(?:[a-z]+)(?:-[a-z]+)?(?:=")(([a-zA-Z])*)(?:")/g;
+
+
 describe('regex', () => {
     it('should match mp-breadcrumb', () => {
         const match = '<mp-breadcrumb'.match(componentNameRegex);
@@ -62,5 +66,13 @@ describe('UnitTestFactory', () => {
             { name: 'value', type: 'Number' }
         ]);
     });
+
+    it('should return the good output type', () => {
+
+        
+        expect(new UnitTestFactory(path, vueCode).propsFactory.props).toStrictEqual([
+            { name: 'value', type: 'Number' }
+        ]);
+    })
 });
 

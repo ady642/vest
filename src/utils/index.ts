@@ -3,6 +3,7 @@ export const getFileName = (thePath: string): string => thePath.substring(thePat
 export const getPath = (pathAndName: string): string => pathAndName.substring(0, pathAndName.lastIndexOf('/'));
 
 export const findClosingMatchIndex = (str: string, pos: number, characters = { open: '{', close: '}' }): number => {
+    console.log(str[pos-1]);
     if (str[pos] !== characters.open) {
         throw new Error(`No ${characters.open} at index ${pos}`);
     }

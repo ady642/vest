@@ -66,13 +66,5 @@ describe('UnitTestFactory', () => {
             { name: 'value', type: 'Number' }
         ]);
     });
-
-    it('should return the good output type', () => {
-
-        
-        expect(new UnitTestFactory(path, vueCode).propsFactory.props).toStrictEqual([
-            { name: 'value', type: 'Number' }
-        ]);
-    })
 });
 

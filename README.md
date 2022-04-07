@@ -4,7 +4,7 @@ Vest is a Typescript library to generate automatically `Jest` unit tests for you
 
 ## Installation
 
-https://marketplace.visualstudio.com/items?itemName=AdriHM.unittestgen
+https://marketplace.visualstudio.com/items?itemName=AdriHM.vest
 
 ## Usage
 

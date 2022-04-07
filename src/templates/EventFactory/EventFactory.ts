@@ -1,3 +1,5 @@
+import { findClosingMatchIndex } from "../../utils";
+
 type possibleOutputType = 'event' | 'externalCall' | 'dispatch' | 'changeChildProp';
 
 export type eventType = {
@@ -10,29 +12,59 @@ class EventFactory {
 
     constructor(componentTag: string, name: string,  vueCode: string) {
         this.name = name;
-        const eventsString = componentTag.match(/@([a-z]*)(-[a-z]+)?/gm);
-        const events: eventType[] = eventsString ? eventsString.map((event) => (
-            { name: event.substring(1), outputType: this.getOutputType(event, vueCode) }
+        const eventLines = componentTag.match(/@([a-z]*)(-[a-z])?(="[a-zA-Z]+")/gm);
+        const events: eventType[] = eventLines ? eventLines.map((eventLine) => (
+            { name: eventLine.substring(eventLine.indexOf('@') + 1, eventLine.indexOf('"') - 1),
+                outputType: this.getOutputType(eventLine, vueCode) }
         )) : [];
 
         this.events = events;
     }
 
     getOutputType(eventLine: string, vueCode: string): possibleOutputType {
-        const $emitRegex = /@(?:[a-zA-Z]+)(?:=")(?:\$emit\(')(([a-z]+-[a-z]+)|([a-z]+))'/gm;
-        const methodRegex = /@(?:[a-z]+)(?:-[a-z]+)?(?:=")(([a-zA-Z])*)(?:")/g;
+        const $emitRegex = /\$emit/gm;
         const $emitMatch = eventLine.match($emitRegex);
-        const methodMatch = eventLine.match(methodRegex);
+        const methodName = eventLine.substring(eventLine.indexOf('"') + 1, eventLine.lastIndexOf('"'));
 
         if($emitMatch) {
             return 'event';
         }
 
-        if(methodMatch) {
+        if(this.isEmitTypeMethod(methodName, vueCode)) {
+            return 'event';
+        }
+
+        if(this.isDispatchTypeMethod(methodName, vueCode)) {
             return 'dispatch';
         }
 
         return 'event';
+    }
+
+    private determineMethodType(type = 'emit', methodName: string, vueCode: string) {
+        const scriptPart = vueCode.substring(
+            vueCode.indexOf("<script") + 1,
+            vueCode.lastIndexOf("</script>")
+        );
+
+        const regexFirstBracket = new RegExp(`(?=(${methodName}))(.*({)$)`,'gm');
+
+        regexFirstBracket.test(scriptPart);
+
+        const method = scriptPart.substring(
+            regexFirstBracket.lastIndex - 1,
+            findClosingMatchIndex(scriptPart, regexFirstBracket.lastIndex - 1)
+        );
+
+        return method.includes(type);
+    }
+
+    isEmitTypeMethod(methodName: string, vueCode: string) {
+        return this.determineMethodType('emit', methodName, vueCode);
+    }
+
+    isDispatchTypeMethod(methodName: string, vueCode: string) {
+        return this.determineMethodType('dispatch', methodName, vueCode);
     }
 
     buildEventsIt() {

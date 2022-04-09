@@ -4,11 +4,11 @@ class SlotsFactory {
     slots: slotsType;
 
     constructor(vueCode: string) {
-        const slots = vueCode.match(/<slot \/>/gm);
+        const slots = vueCode.match(/<slot.*(name="[a-z]+(-[a-z]+)?")?/gm);
 
         const matchSlots = (slot: string) => slot.match(/"([a-z]*)"/) ?? [];
 
-        this.slots =  slots?.map((slot) => matchSlots(slot).length > 0 ? matchSlots(slot)[0] : 'default') ?? [];
+        this.slots =  slots?.map((slot) => matchSlots(slot).length > 0 ? matchSlots(slot)[1] : 'default') ?? [];
     }
 
     buildSlotsIt() {
@@ -22,7 +22,7 @@ class SlotsFactory {
                expect(wrapper.html()).toContain('I fill the ${slot} slot')
              })`
     )}
-        })`;
+    })`;
     }
 
     getDefaultSlots() {

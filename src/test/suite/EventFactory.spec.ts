@@ -82,5 +82,35 @@ describe('EventFactory', () => {
             .getOutputType(eventLine, ''))
             .toStrictEqual('event');
     });
+
+    it('should return build tests', () => {
+        const componentTag = `<MpInCard @click="handleClick">`;
+        const vueCode = `<template>
+                            <MpInCard @click="handleClick">
+                            <slot />
+                            </MpInCard>
+                        </template>
+                        
+                        <script lang="ts" setup>
+                        const emit = defineEmits(['click'])
+                        
+                        const handleClick = () => {
+                            emit('on-click')
+                        }
+
+                        const handleOtherMethod = () => {
+                            emit('test')
+                        }
+                        </script>`;
+
+        expect(new EventFactory(componentTag, 'MpInCard', vueCode)
+            .buildEventsIt())
+            .toStrictEqual(`describe('events', () => {
+            it('should emit click when MpInCard emits click', async () => {
+            await MpInCardWrapper.vm.$emit('click')
+            expect(wrapper.emitted('on-click')).toHaveLength(1)
+        })
+        })`);
+    });
 });
 

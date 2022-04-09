@@ -67,22 +67,20 @@ class EventFactory {
         return this.determineMethodType('dispatch', methodName, vueCode);
     }
 
-    buildEventsIt() {
+    buildItEvent(event: eventType) {
+        return `it('should emit ${event.name} when ${this.name} emits ${event.name}', async () => {
+            await ${this.name}Wrapper.vm.$emit('${event.name}')
+            expect(wrapper.emitted('my-event')).toHaveLength(1)
+        })`;
+    }
+
+    buildEventsIt(): string {
         if(this.events?.length === 0) {
             return '';
         }
 
-        const chooseAction = (outputType: string) => {
-            return outputType === 'event' ? 'emit': 'dispatch';
-        };
-
         return `describe('events', () => {
-            ${this.events?.map((event) =>
-        `it('should ${chooseAction(event.outputType)} ${event.name} when ${this.name} emits ${event.name}', async () => {
-                await ${this.name}Wrapper.vm.$emit('${event.name}')
-                expect(wrapper.emitted('my-event')).toHaveLength(1)
-            })`
-    )}
+            ${this.events?.map((event) => event.outputType === 'event' ? this.buildItEvent(event): this.buildItEvent(event) )}
         })`;
     }
 }

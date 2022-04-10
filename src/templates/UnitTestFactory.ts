@@ -3,8 +3,6 @@ import PropsFactory from "./PropsFactory";
 import ChildrenFactory, { childType } from "./ChildrenFactory";
 import SlotsFactory from "./SlotsFactory/SlotsFactory";
 
-// TODO: GET REAL NAME EVENT EMITTED IF IS EMIT TYPE (FROM EMITS list)
-// TODO: CREATE TEMPLATE STRING IF IS A DISPATCH HANDLER
 // TODO: GET REAL TYPE OF PROPS CHILD
 
 class UnitTestFactory {

@@ -1,10 +1,11 @@
 import { findClosingMatchIndex } from "../../utils";
 
-type possibleOutputType = 'event' | 'externalCall' | 'dispatch' | 'changeChildProp';
+type possibleOutputType = 'event' | 'dispatch';
 
 export type eventType = {
     name: string
     outputType: possibleOutputType
+    outputPropertyName: string
 };
 class EventFactory {
     events: eventType[];
@@ -12,36 +13,41 @@ class EventFactory {
 
     constructor(componentTag: string, name: string,  vueCode: string) {
         this.name = name;
-        const eventLines = componentTag.match(/@([a-z]*)(-[a-z])?(="[a-zA-Z]+")/gm);
-        const events: eventType[] = eventLines ? eventLines.map((eventLine) => (
-            { name: eventLine.substring(eventLine.indexOf('@') + 1, eventLine.indexOf('"') - 1),
-                outputType: this.getOutputType(eventLine, vueCode) }
-        )) : [];
+        const eventLines = componentTag.match(/@([a-z]*)(-[a-z]*)?(="[a-zA-Z]+")/gm);
+        const events: eventType[] = eventLines ? eventLines.map((eventLine) => {
+            const output = this.getOutput(eventLine, vueCode);
+
+            return {
+                name: eventLine.substring(eventLine.indexOf('@') + 1, eventLine.indexOf('"') - 1),
+                outputType: output.type,
+                outputPropertyName: output.propertyName
+            } ;
+        } ) : [];
 
         this.events = events;
     }
 
-    getOutputType(eventLine: string, vueCode: string): possibleOutputType {
+    getOutput(eventLine: string, vueCode: string): { type: possibleOutputType, propertyName: string } {
         const $emitRegex = /\$emit/gm;
         const $emitMatch = eventLine.match($emitRegex);
         const methodName = eventLine.substring(eventLine.indexOf('"') + 1, eventLine.lastIndexOf('"'));
 
         if($emitMatch) {
-            return 'event';
+            return { type: 'event', propertyName: this.getEventEmittedName(eventLine, vueCode, true) } ;
         }
 
         if(this.isEmitTypeMethod(methodName, vueCode)) {
-            return 'event';
+            return { type: 'event', propertyName: this.getEventEmittedName(methodName, vueCode) } ;
         }
 
         if(this.isDispatchTypeMethod(methodName, vueCode)) {
-            return 'dispatch';
+            return { type: 'dispatch', propertyName: this.getDispatchActionName(methodName, vueCode) } ;
         }
 
-        return 'event';
+        return { type: 'event', propertyName: 'my-emitted-event' };
     }
 
-    private determineMethodType(type = 'emit', methodName: string, vueCode: string) {
+    private getMethod(methodName: string, vueCode: string) {
         const scriptPart = vueCode.substring(
             vueCode.indexOf("<script") + 1,
             vueCode.lastIndexOf("</script>")
@@ -51,27 +57,68 @@ class EventFactory {
 
         regexFirstBracket.test(scriptPart);
 
-        const method = scriptPart.substring(
+        return scriptPart.substring(
             regexFirstBracket.lastIndex - 1,
             findClosingMatchIndex(scriptPart, regexFirstBracket.lastIndex - 1)
         );
-
-        return method.includes(type);
     }
 
     isEmitTypeMethod(methodName: string, vueCode: string) {
-        return this.determineMethodType('emit', methodName, vueCode);
+        const method = this.getMethod(methodName, vueCode);
+
+        return method.includes('emit');
+    }
+
+    getEventEmittedName(methodName: string, vueCode: string, is$Emit = false): string  {
+        const method = is$Emit ? methodName : this.getMethod(methodName, vueCode);
+
+        const eventNameRegex = /emit\(((?:'|")([a-z]*(-[a-z])?)*(?:'|"))/gm;
+
+        const methodMatch = method.match(eventNameRegex) ?? [''];
+
+        const eventName = methodMatch[0].substring(methodMatch[0].indexOf("'") + 1, methodMatch[0].lastIndexOf("'"));
+
+        return eventName;
     }
 
     isDispatchTypeMethod(methodName: string, vueCode: string) {
-        return this.determineMethodType('dispatch', methodName, vueCode);
+        const method = this.getMethod(methodName, vueCode);
+
+        return method.includes('await');
+    }
+
+    getDispatchActionName(methodName: string, vueCode: string): string  {
+        return 'my-action-name';
     }
 
     buildItEvent(event: eventType) {
         return `it('should emit ${event.name} when ${this.name} emits ${event.name}', async () => {
             await ${this.name}Wrapper.vm.$emit('${event.name}')
-            expect(wrapper.emitted('my-event')).toHaveLength(1)
+            expect(wrapper.emitted('${event.outputPropertyName}')).toHaveLength(1)
         })`;
+    }
+
+    buildItDispatch(event: eventType) {
+        return `it('should dispatch my-action-name when ${this.name} emits ${event.name}', async () => {
+            const store = createSearchStoreMocked()
+            store.dispatch = jest.fn()
+
+            wrapper = createWrapper({ store })
+
+            ${this.name}Wrapper = find${this.name}Wrapper(wrapper)
+
+            await ${this.name}Wrapper.vm.$emit('${event.name}')
+            expect(store.dispatch).toHaveBeenCalledWith('my-action-name')
+        })`;
+    }
+
+    private chooseIt(event: eventType) {
+        const mapping = {
+            'event': this.buildItEvent(event),
+            'dispatch': this.buildItDispatch(event)
+        };
+
+        return mapping[event.outputType];
     }
 
     buildEventsIt(): string {
@@ -80,7 +127,7 @@ class EventFactory {
         }
 
         return `describe('events', () => {
-            ${this.events?.map((event) => event.outputType === 'event' ? this.buildItEvent(event): this.buildItEvent(event) )}
+            ${this.events?.map((event) => this.chooseIt(event) )}
         })`;
     }
 }

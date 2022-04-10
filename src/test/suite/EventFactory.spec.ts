@@ -12,7 +12,7 @@ describe('EventFactory', () => {
                     const emit = defineEmits(['click'])
                     
                     const breadcrumbClick = () => {
-                        emit('click')
+                        emit('on-click')
                     }
 
                     const handleOtherMethod = () => {
@@ -21,8 +21,8 @@ describe('EventFactory', () => {
                     </script>`;
 
         expect(new EventFactory(`<MpInCard @click="breadcrumbClick"> <slot /> </MpInCard>`, 'MpBreadcrumb', vueCode)
-            .getOutputType('@click="breadcrumbClick"', vueCode))
-            .toStrictEqual('event');
+            .getOutput('@click="breadcrumbClick"', vueCode))
+            .toStrictEqual({ type: 'event', propertyName: 'on-click' });
     });
 
     it('should return event if method has emit keyword', () => {
@@ -76,11 +76,20 @@ describe('EventFactory', () => {
     });
 
     it('should return event if handle is $emit', () => {
-        const eventLine = `@click="$emit('click')"`;
+        const eventLine = `@click="$emit('on-click')"`;
+        const vueCode = `<template>
+                        <MpInCard @click="$emit('on-click')">
+                        <slot />
+                        </MpInCard>
+                    </template>
+                    
+                    <script lang="ts" setup>
+                    const emit = defineEmits(['on-click'])
+                    </script>`;
 
-        expect(new EventFactory(eventLine, 'NattoCard', '')
-            .getOutputType(eventLine, ''))
-            .toStrictEqual('event');
+        expect(new EventFactory(eventLine, 'NattoCard', vueCode)
+            .getOutput(eventLine, vueCode))
+            .toStrictEqual({ type: 'event', propertyName: 'on-click' });
     });
 
     it('should return build tests', () => {
@@ -109,6 +118,37 @@ describe('EventFactory', () => {
             it('should emit click when MpInCard emits click', async () => {
             await MpInCardWrapper.vm.$emit('click')
             expect(wrapper.emitted('on-click')).toHaveLength(1)
+        })
+        })`);
+    });
+
+    it('should return build dispatch tests', () => {
+        const componentTag = `<MpInCard @click="handleClick">`;
+        const vueCode = `<template>
+                            <MpInCard @click="handleClick">
+                            <slot />
+                            </MpInCard>
+                        </template>
+                        
+                        <script lang="ts" setup>
+                        const handleClick = async () => {
+                            await downloadDocument()
+                        }
+                        </script>`;
+
+        expect(new EventFactory(componentTag, 'MpInCard', vueCode)
+            .buildEventsIt())
+            .toStrictEqual(`describe('events', () => {
+            it('should dispatch my-action-name when MpInCard emits click', async () => {
+            const store = createSearchStoreMocked()
+            store.dispatch = jest.fn()
+
+            wrapper = createWrapper({ store })
+
+            MpInCardWrapper = findMpInCardWrapper(wrapper)
+
+            await MpInCardWrapper.vm.$emit('click')
+            expect(store.dispatch).toHaveBeenCalledWith('my-action-name')
         })
         })`);
     });

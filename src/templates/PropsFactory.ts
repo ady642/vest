@@ -75,8 +75,6 @@ class PropsFactory {
             'array': '[]'
         };
 
-        console.log(mappingDefaultValue[type]);
-
         return mappingDefaultValue[type];
     }
 

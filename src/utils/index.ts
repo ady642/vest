@@ -1,6 +1,9 @@
-export const getFileName = (thePath: string): string => thePath.substring(thePath.lastIndexOf('/') + 1).split('.')[0];
+const isWindows = process.platform === "win32";
+const separator = isWindows ?  '\\' : '/'
 
-export const getPath = (pathAndName: string): string => pathAndName.substring(0, pathAndName.lastIndexOf('/'));
+export const getFileName = (thePath: string): string => thePath.substring(thePath.lastIndexOf(separator) + 1).split('.')[0];
+
+export const getPath = (pathAndName: string): string => pathAndName.substring(0, pathAndName.lastIndexOf(separator));
 
 export const findClosingMatchIndex = (str: string, pos: number, characters = { open: '{', close: '}' }): number => {
     console.log(str[pos-1]);

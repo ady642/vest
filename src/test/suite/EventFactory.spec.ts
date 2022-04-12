@@ -76,20 +76,20 @@ describe('EventFactory', () => {
     });
 
     it('should return event if handle is $emit', () => {
-        const eventLine = `@click="$emit('on-click')"`;
+        const eventLine = `@click="$emit('on-click2')"`;
         const vueCode = `<template>
-                        <MpInCard @click="$emit('on-click')">
+                        <MpInCard @click="$emit('on-click2')">
                         <slot />
                         </MpInCard>
                     </template>
                     
                     <script lang="ts" setup>
-                    const emit = defineEmits(['on-click'])
+                    const emit = defineEmits(['on-click2'])
                     </script>`;
 
         expect(new EventFactory(eventLine, 'NattoCard', vueCode)
             .getOutput(eventLine, vueCode))
-            .toStrictEqual({ type: 'event', propertyName: 'on-click' });
+            .toStrictEqual({ type: 'event', propertyName: 'on-click2' });
     });
 
     it('should return build tests', () => {

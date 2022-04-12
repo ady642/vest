@@ -13,7 +13,7 @@ class EventFactory {
 
     constructor(componentTag: string, name: string,  vueCode: string) {
         this.name = name;
-        const eventLines = componentTag.match(/@([a-z]*)(-[a-z]*)?(="[a-zA-Z]+")/gm);
+        const eventLines = componentTag.match(/@([a-z]*)(-[a-z]*)?(=".+")/gm);
         const events: eventType[] = eventLines ? eventLines.map((eventLine) => {
             const output = this.getOutput(eventLine, vueCode);
 
@@ -72,7 +72,7 @@ class EventFactory {
     getEventEmittedName(methodName: string, vueCode: string, is$Emit = false): string  {
         const method = is$Emit ? methodName : this.getMethod(methodName, vueCode);
 
-        const eventNameRegex = /emit\(((?:'|")([a-z]*(-[a-z])?)*(?:'|"))/gm;
+        const eventNameRegex = /emit\(((?:'|")([a-z0-9]*(-[a-z0-9])?)*(?:'|"))/gm;
 
         const methodMatch = method.match(eventNameRegex) ?? [''];
 

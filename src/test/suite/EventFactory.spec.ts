@@ -105,6 +105,7 @@ describe('EventFactory', () => {
                         
                         const handleClick = () => {
                             emit('on-click')
+                            emit('test3')
                         }
 
                         const handleOtherMethod = () => {
@@ -118,6 +119,7 @@ describe('EventFactory', () => {
             it('should emit click when MpInCard emits click', async () => {
             await MpInCardWrapper.vm.$emit('click')
             expect(wrapper.emitted('on-click')).toHaveLength(1)
+expect(wrapper.emitted('test3')).toHaveLength(1)
         })
         })`);
     });

@@ -7,6 +7,8 @@ export type eventType = {
     outputType: possibleOutputType
     outputPropertyName: string
 };
+
+const EVENT_SEPARATOR = ',';
 class EventFactory {
     events: eventType[];
     name: string;
@@ -76,9 +78,7 @@ class EventFactory {
 
         const methodMatch = method.match(eventNameRegex) ?? [''];
 
-        const eventName = methodMatch[0].substring(methodMatch[0].indexOf("'") + 1, methodMatch[0].lastIndexOf("'"));
-
-        return eventName;
+        return methodMatch.map(eventName => eventName.substring(eventName.indexOf("'") + 1, eventName.lastIndexOf("'"))).join(EVENT_SEPARATOR);
     }
 
     isDispatchTypeMethod(methodName: string, vueCode: string) {
@@ -92,9 +92,11 @@ class EventFactory {
     }
 
     buildItEvent(event: eventType) {
+        const events = event.outputPropertyName.split(EVENT_SEPARATOR);
+
         return `it('should emit ${event.name} when ${this.name} emits ${event.name}', async () => {
             await ${this.name}Wrapper.vm.$emit('${event.name}')
-            expect(wrapper.emitted('${event.outputPropertyName}')).toHaveLength(1)
+            ${events.map(outputProperty => `expect(wrapper.emitted('${outputProperty}')).toHaveLength(1)`).join('\n')}
         })`;
     }
 

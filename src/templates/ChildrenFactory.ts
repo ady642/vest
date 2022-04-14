@@ -8,7 +8,7 @@ export type childType = {
     eventFactory?: EventFactory
 };
 
-const htmlTags = 'template|slot|script|style|div|section|a|button|p|select|textarea|main|head|h1|h2|h3|header|i|iframe|img|span';
+const htmlTags = 'template|slot|string|script|style|div|section|a|button|p|select|textarea|main|head|h1|h2|h3|header|i|iframe|img|span';
 
 const elementPlusRegexMatch = /^El+([A-Z])/;
 const myPulseRegexMatch = /^Mp+([A-Z])/;

@@ -1,7 +1,7 @@
 import {addDoubleQuotes, convertObjToArrayOfObj, findClosingMatchIndex} from "../utils";
 import {childType} from "./ChildrenFactory";
 
-export type propVueType = { type: string, required?: boolean } | 'Number' | 'Boolean' | 'String';
+export type propVueType = { type: string, required?: boolean } | 'Number' | 'Boolean' | 'String' | string[];
 
 type possibleTypes = 'number' | 'boolean' | 'string' | 'array';
 
@@ -37,7 +37,11 @@ class PropsFactory {
 
         this.props = propsList.map((prop) => {
             const name = Object.keys(prop)[0];
-            const value = Object.values(prop)[0] as propVueType;
+            let value = Object.values(prop)[0] as propVueType;
+
+            if(Array.isArray(value)) {
+                return { name, type: value[0] };
+            }
 
             if(typeof value === 'object') {
                 return {name, type: value?.type};

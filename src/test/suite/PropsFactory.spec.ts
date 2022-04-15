@@ -23,4 +23,14 @@ describe('PropsFactory', () => {
             { name: 'ellipsed', type: 'boolean' },
         ]);
     });
+
+    it('should construct the props with a prop with an array type', () => {
+        const path = './dummy_data/components/Select/NattoSelect.vue';
+        const vueCode = fs.readFileSync(path, 'utf8');
+
+        expect(new PropsFactory(vueCode).props).toStrictEqual([
+            { name: 'options', type: 'Array' },
+            { name: 'modelValue', type: 'String' },
+        ]);
+    });
 });

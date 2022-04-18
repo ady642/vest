@@ -32,7 +32,9 @@ class EventFactory {
     getOutput(eventLine: string, vueCode: string): { type: possibleOutputType, propertyName: string } {
         const $emitRegex = /\$emit/gm;
         const $emitMatch = eventLine.match($emitRegex);
-        const methodName = eventLine.substring(eventLine.indexOf('"') + 1, eventLine.lastIndexOf('"'));
+        const methodRegex = /(?="([a-zA-Z]+))/gm;
+        const methodMatch = eventLine.match(methodRegex) ?? [];
+        const methodName = methodMatch[0];
 
         if($emitMatch) {
             return { type: 'event', propertyName: this.getEventEmittedName(eventLine, vueCode, true) } ;
@@ -58,6 +60,10 @@ class EventFactory {
         const regexFirstBracket = new RegExp(`(?=(${methodName}))(.*({)$)`,'gm');
 
         regexFirstBracket.test(scriptPart);
+
+        const firstBracket = regexFirstBracket.lastIndex;
+
+        const lastBracket = findClosingMatchIndex(scriptPart, regexFirstBracket.lastIndex - 1);
 
         return scriptPart.substring(
             regexFirstBracket.lastIndex - 1,

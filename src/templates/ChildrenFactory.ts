@@ -36,7 +36,7 @@ class ChildrenFactory {
             const name = pascalize(nameInKebabOrPascalCase[0].substring(1));
             const propsString = componentTag.match(/:([a-z]*)(-[a-z]+)?/gm);
             const props = propsString ? propsString.map((prop) => ({name: prop.substring(1), type: 'boolean'})) : [];
-            const className = getMatches(componentTag, /class="(.*?)"/gm, 1)[0];
+            const className = getMatches(componentTag, /(?<!:)class="(.*?)"/gm, 1)[0];
             const eventFactory = new EventFactory(componentTag, name, vueCode);
 
             return {

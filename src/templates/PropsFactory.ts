@@ -37,17 +37,17 @@ class PropsFactory {
 
         this.props = propsList.map((prop) => {
             const name = Object.keys(prop)[0];
-            let value = Object.values(prop)[0] as propVueType;
+            let type = Object.values(prop)[0] as propVueType;
 
-            if(Array.isArray(value)) {
-                return { name, type: value[0] };
+            if(Array.isArray(type)) {
+                return { name, type: type[0] };
             }
 
-            if(typeof value === 'object') {
-                return {name, type: value?.type};
+            if(typeof type === 'object') {
+                return {name, type: Array.isArray(type?.type) ? type?.type[0] : type?.type};
             }
 
-            return { name, type: value.toLowerCase()};
+            return { name, type: type.toLowerCase()};
         }) as propType[];
     }
 

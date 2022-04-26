@@ -33,4 +33,15 @@ describe('PropsFactory', () => {
             { name: 'modelValue', type: 'String' },
         ]);
     });
+
+    it('should construct the props with a prop with an multiple type', () => {
+        const path = './dummy_data/components/Table/NattoTableItem.vue';
+        const vueCode = fs.readFileSync(path, 'utf8');
+
+        expect(new PropsFactory(vueCode).props).toStrictEqual([
+            { name: 'label', type: 'string' },
+            { name: 'width', type: 'Number' },
+            { name: 'sortable', type: 'boolean' },
+        ]);
+    });
 });
